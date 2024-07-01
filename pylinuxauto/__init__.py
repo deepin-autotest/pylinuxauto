@@ -1,0 +1,113 @@
+from typing import Union, List
+
+from pylinuxauto.attr import Attr
+from pylinuxauto.attr.dogtail.tree import Node
+from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin
+
+
+def find_element_by_attr_name(
+        *,
+        appname: str = "",
+        name: str = "",
+        role_name: str = "",
+        description: str = "",
+        label: str = "",
+        recursive: bool = True,
+        retry: bool = False,
+        debugName: str = None,
+        showingOnly=None
+) -> Node:
+    return Attr().find_element_by_attr_name(
+        appname=appname,
+        name=name,
+        role_name=role_name,
+        description=description,
+        label=label,
+        recursive=recursive,
+        retry=retry,
+        debugName=debugName,
+        showingOnly=showingOnly
+    )
+
+
+def find_element_by_attr_path(attr_path) -> Node:
+    return Attr().find_element_by_attr_path(attr_path=attr_path)
+
+
+def find_element_by_image(
+        *widget,
+        rate: Union[float, int] = None,
+        multiple: bool = False,
+        picture_abspath: str = None,
+        screen_bbox: List[int] = None,
+        network_retry: int = None,
+        pause: [int, float] = None,
+        timeout: [int, float] = None,
+        max_match_number: int = None,
+) -> MouseKeyChainMixin:
+    from pylinuxauto.image import Image
+    return Image().find_element_by_image(
+        *widget,
+        rate=rate,
+        multiple=multiple,
+        picture_abspath=picture_abspath,
+        screen_bbox=screen_bbox,
+        network_retry=network_retry,
+        pause=pause,
+        timeout=timeout,
+        max_match_number=max_match_number,
+    )
+
+
+def find_element_by_ocr(
+        *target_strings,
+        picture_abspath: str = None,
+        similarity: [int, float] = 0.6,
+        return_default: bool = False,
+        return_first: bool = False,
+        lang: str = "ch",
+        network_retry: int = None,
+        pause: [int, float] = None,
+        timeout: [int, float] = None,
+        max_match_number: int = None,
+) -> MouseKeyChainMixin:
+    from pylinuxauto.ocr import OCR
+    return OCR().find_element_by_ocr(
+        *target_strings,
+        picture_abspath=picture_abspath,
+        similarity=similarity,
+        return_default=return_default,
+        return_first=return_first,
+        lang=lang,
+        network_retry=network_retry,
+        pause=pause,
+        timeout=timeout,
+        max_match_number=max_match_number,
+    )
+
+
+def find_element_by_ui(
+        appname,
+        config_path,
+        btn_name,
+        number=-1,
+        pause=1,
+        retry=1,
+        offset_x=None,
+        multiplier_x=None,
+        offset_y=None,
+        multiplier_y=None,
+) -> MouseKeyChainMixin:
+    from pylinuxauto.ui import UI
+    return UI().find_element_by_ui(
+        appname,
+        config_path,
+        btn_name,
+        number=number,
+        pause=pause,
+        retry=retry,
+        offset_x=offset_x,
+        multiplier_x=multiplier_x,
+        offset_y=offset_y,
+        multiplier_y=multiplier_y,
+    )
