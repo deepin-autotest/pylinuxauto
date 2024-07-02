@@ -3,21 +3,16 @@
 # SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
 # SPDX-License-Identifier: Apache Software License
 import os
-import random
 import time
 from typing import List, Union
 from xmlrpc.client import Binary
 from xmlrpc.client import ServerProxy
 
-from funnylog import logger
 import easyprocess
-
-from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin
-
 import pyscreenshot
-
-from pylinuxauto.config import config
+from funnylog import logger
 from pylinuxauto import exceptions
+from pylinuxauto.config import config
 
 
 class ImageBase:
@@ -25,10 +20,11 @@ class ImageBase:
 
     @classmethod
     def server_url(cls):
-        return f"http://{config.SERVER_IP}:{config.PORT}"
+        return f"http://{config.IMAGE_SERVER_IP}:{config.IMAGE_PORT}"
 
     @classmethod
     def server(cls):
+        a = cls.server_url()
         return ServerProxy(cls.server_url(), allow_none=True)
 
     @classmethod
@@ -110,7 +106,7 @@ class ImageBase:
                 )
             except OSError as exc:
                 raise EnvironmentError(
-                    f"IMAGE PRC服务器链接失败. http://{config.SERVER_IP}:{config.PORT}"
+                    f"IMAGE PRC服务器链接失败. http://{config.IMAGE_SERVER_IP}:{config.IMAGE_PORT}"
                 ) from exc
 
     @classmethod

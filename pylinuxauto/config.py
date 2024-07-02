@@ -26,6 +26,8 @@ class _Config:
 
     # IMAGE
     IMAGE_SERVER_IP = "127.0.0.1"
+
+    a = [i.strip() for i in IMAGE_SERVER_IP.split("/") if i]
     IMAGE_PORT = 8889
     IMAGE_NETWORK_RETRY = 1
     IMAGE_PAUSE = 1

@@ -13,6 +13,7 @@ from pylinuxauto.attr.dogtail.tree import SearchError
 from pylinuxauto.attr.dogtail.tree import root
 from pylinuxauto.attr.dogtail.config import config
 from pylinuxauto.attr.dogtail.tree import Node
+from pylinuxauto.exceptions import ElementNotFound
 
 
 class Attr():
@@ -30,7 +31,10 @@ class Attr():
             self.obj = root
 
     def __find_child(self, obj, *args, **kwargs):
-        return obj.child(*args, **kwargs)
+        try:
+            return obj.child(*args, **kwargs)
+        except SearchError:
+            raise ElementNotFound(*args, **kwargs)
 
     def find_element_by_attr_name(
             self,

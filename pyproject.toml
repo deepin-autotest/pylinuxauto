@@ -6,6 +6,8 @@ authors = [
 ]
 dependencies = [
     "funnylog",
+    "pyscreenshot",
+    'python3-Xlib;platform_system=="Linux" and python_version>="3.0"',
 ]
 dynamic = [
   "version",
