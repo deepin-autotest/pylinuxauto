@@ -1,5 +1,12 @@
-# PyLinuxAuto
-Linux GUI Automation with Python 🔥
+<p align="center">
+  <a href="https://github.com/funny-dream/youqu3">
+    <img src="./docs/assets/logo.png" width="100" alt="YouQu3">
+  </a>
+</p>
+<h1 align="center">PyLinuxAuto</h1>
+<p align="center">
+    <em>Linux GUI Automation with Python.</em>
+</p>
 
 --------------------------
 
@@ -10,7 +17,9 @@ Linux GUI Automation with Python 🔥
 <div style="float: left"><img src="https://img.shields.io/badge/Deepin-007CFF?style=for-the-badge&logo=deepin&logoColor=white"></div>
 --------------------------
 
-PyLinuxAuto 是一个用于 Linux 桌面 GUI 自动化测试的 Python 模块，支持多种元素定位方法和键鼠操作。
+**PyLinuxAuto** 是一个用于 Linux 桌面 GUI 自动化测试的 Python 模块，支持多种元素定位方法和键鼠操作。
+
+文档：https://youqu.uniontech.com/v3/pylinuxauto
 
 ## 安装
 
