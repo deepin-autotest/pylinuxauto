@@ -8,13 +8,7 @@
     <em>Linux GUI Automation with Python.</em>
 </p>
 
---------------------------
-
-<div style="float: left"><img src="https://img.shields.io/badge/python-007CFF?style=for-the-badge&logo=python&logoColor=white"></div>
-<div style="float: left">&nbsp;</div>
-<div style="float: left"><img src="https://img.shields.io/badge/Linux-007CFF?style=for-the-badge&logo=linux&logoColor=white"></div>
-<div style="float: left">&nbsp;</div>
-<div style="float: left"><img src="https://img.shields.io/badge/Deepin-007CFF?style=for-the-badge&logo=deepin&logoColor=white"></div>
+![](https://img.shields.io/badge/python-007CFF?style=for-the-badge&logo=python&logoColor=white) &nbsp; ![](https://img.shields.io/badge/Linux-007CFF?style=for-the-badge&logo=linux&logoColor=white) &nbsp; ![](https://img.shields.io/badge/Deepin-007CFF?style=for-the-badge&logo=deepin&logoColor=white)
 
 **PyLinuxAuto** 是一个用于 Linux 桌面 GUI 自动化测试的 Python 模块，支持多种元素定位方法和键鼠操作。
 
