@@ -1,0 +1,4 @@
+-i https://pypi.tuna.tsinghua.edu.cn/simple
+python3-xlib
+funnylog
+pyscreenshot

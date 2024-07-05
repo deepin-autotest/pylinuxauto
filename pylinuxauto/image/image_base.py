@@ -139,10 +139,10 @@ class ImageBase:
         :param max_match_number: 最大匹配次数
         :return: 坐标元组
         """
-        network_retry = network_retry if network_retry else config.NETWORK_RETRY
-        pause = pause if pause else config.PAUSE
-        timeout = timeout if timeout else config.TIMEOUT
-        max_match_number = max_match_number if max_match_number else config.MAX_MATCH_NUMBER
+        network_retry = network_retry if network_retry else config.IMAGE_NETWORK_RETRY
+        pause = pause if pause else config.IMAGE_PAUSE
+        timeout = timeout if timeout else config.IMAGE_TIMEOUT
+        max_match_number = max_match_number if max_match_number else config.IMAGE_MAX_MATCH_NUMBER
 
         retry_number = int(max_match_number)
         if retry_number < 0:

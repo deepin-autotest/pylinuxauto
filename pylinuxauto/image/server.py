@@ -26,7 +26,7 @@ def check_connected():
 
 
 def image_put(data):
-    CURRENT_DIR = dirname(abspath(__file__))
+    CURRENT_DIR = dirname(abspath("."))
     pic_dir = join(CURRENT_DIR, "pic")
     if not exists(pic_dir):
         makedirs(pic_dir)

@@ -19,7 +19,7 @@ class ThreadXMLRPCServer(ThreadingMixIn, SimpleXMLRPCServer):
     pass
 
 
-CURRENT_DIR = dirname(abspath(__file__))
+CURRENT_DIR = dirname(abspath("."))
 
 
 def check_connected():

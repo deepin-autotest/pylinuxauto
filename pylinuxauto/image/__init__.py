@@ -33,7 +33,7 @@ class Image(MouseKeyChainMixin):
             raise EnvironmentError(f"所有IMAGE服务器不可用: {log_server}")
         self.result = ImageBase.find_element(*args, **kwargs)
 
-        if isinstance(self.result, tuple):
+        if isinstance(self.result, list):
             self.x, self.y = self.result
 
         return self
