@@ -1,5 +1,7 @@
+import os
 from typing import Union, List
 
+os.environ["DISPLAY"] = ":0"
 from pylinuxauto.attr import Attr
 from pylinuxauto.attr.dogtail.tree import Node
 from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin

@@ -3,6 +3,10 @@
 # SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
 # SPDX-License-Identifier: Apache Software License
 
+"""
+sudo apt install python3-opencv
+"""
+
 from os import makedirs
 from os.path import join, dirname, abspath, exists
 from socketserver import ThreadingMixIn
@@ -15,8 +19,11 @@ import numpy as np
 
 class ThreadXMLRPCServer(ThreadingMixIn, SimpleXMLRPCServer):
     pass
+
+
 def check_connected():
     return True
+
 
 def image_put(data):
     CURRENT_DIR = dirname(abspath(__file__))

@@ -13,7 +13,7 @@ def install_depends():
         "libatk-adaptor",
         "at-spi2-core",
     ]:
-        check_installed: bool = os.popen(f"dpkg -l {p}").read().strip().startswith("dpkg-query")
+        check_installed: bool = os.popen(f"dpkg -s {p}").read().strip() == ""
         if check_installed:
             # TODO
             # 调研是否能不带权限安装
@@ -49,7 +49,7 @@ def install_depends():
             os.system(f"rm -rf {px}*")
     else:
         for p in dps:
-            check_installed: bool = os.popen(f"dpkg -s {p}").read().strip().startswith("dpkg-query")
+            check_installed = os.popen(f"dpkg -s {p}").read().strip() == ""
             if check_installed:
                 os.system(f"echo '{config.PASSWORD}' | sudo -S apt install {p} -y")
 
