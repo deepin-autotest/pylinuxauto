@@ -8,11 +8,16 @@
     <em>Linux GUI Automation with Python.</em>
 </p>
 
-![](https://img.shields.io/badge/python-007CFF?style=for-the-badge&logo=python&logoColor=white) &nbsp; ![](https://img.shields.io/badge/Linux-007CFF?style=for-the-badge&logo=linux&logoColor=white) &nbsp; ![](https://img.shields.io/badge/Deepin-007CFF?style=for-the-badge&logo=deepin&logoColor=white)
+<div style="float: left"><img src="https://img.shields.io/badge/python-007CFF?style=for-the-badge&logo=python&logoColor=white"></div>
+<div style="float: left">&nbsp;&nbsp;</div>
+<div style="float: left"><img src="https://img.shields.io/badge/Linux-007CFF?style=for-the-badge&logo=linux&logoColor=white"></div>
+<div style="float: left">&nbsp;&nbsp;</div>
+<div style="float: left"><img src="https://img.shields.io/badge/Deepin-007CFF?style=for-the-badge&logo=deepin&logoColor=white"></div>
+<br>
 
 **PyLinuxAuto** 是一个用于 Linux 桌面 GUI 自动化测试的 Python 模块，支持多种元素定位方法和键鼠操作。
 
-文档：https://youqu.uniontech.com/v3/pylinuxauto
+文档：https://youqu.uniontech.com/pylinuxauto
 
 ## 安装
 
@@ -40,7 +45,9 @@ pylinuxauto.find_element_by_attr_path("/dde-doc/Btn_文件管理器").click()
 
 ```python
 import pylinuxauto
+from pylinuxauto.config import config
 
+config.IMAGE_SERVER_IP = "192.168.0.1"
 pylinuxauto.find_element_by_image("~/Desktop/template.png").click()
 ```
 
@@ -50,7 +57,9 @@ pylinuxauto.find_element_by_image("~/Desktop/template.png").click()
 
 ```python
 import pylinuxauto
+from pylinuxauto.config import config
 
+config.OCR_SERVER_IP = "192.168.0.1"
 pylinuxauto.find_element_by_ocr("中国").click()
 ```
 

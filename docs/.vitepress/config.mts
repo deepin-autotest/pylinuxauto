@@ -19,24 +19,24 @@ export default defineConfig({
         siteTitle: "PyLinuxAuto",
         nav: [
             {text: '🏠 首页', link: '/index'},
-            {text: '🧭 指南', link: '/简介'},
+            {text: '🧭 指南', link: '/指南/README'},
         ],
 
         sidebar: {
-             "/pylinuxauto/": [
+             "/指南/": [
                 {
                     text: "PyLinuxAuto",
                     items: [
-                        {text: "简介", link: "/pylinuxauto/简介"},
+                        {text: "简介", link: "/指南/README"},
                     ]
                 },
                 {
                     text: "定位方法",
                     items: [
-                        {text: "属性定位", link: "/属性定位"},
-                        {text: "图像识别", link: "/图像识别"},
-                        {text: "OCR识别", link: "/OCR识别"},
-                        {text: "相对位移定位", link: "/相对位移定位"},
+                        {text: "属性定位", link: "/指南/属性定位"},
+                        {text: "图像识别", link: "/指南/图像识别"},
+                        {text: "OCR识别", link: "/指南/OCR识别"},
+                        {text: "相对位移定位", link: "/指南/相对位移定位"},
                     ]
                 },
             ],
