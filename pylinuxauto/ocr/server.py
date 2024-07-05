@@ -19,14 +19,11 @@ class ThreadXMLRPCServer(ThreadingMixIn, SimpleXMLRPCServer):
     pass
 
 
-CURRENT_DIR = dirname(abspath("."))
-
-
 def check_connected():
     return True
 
-
 def image_put(data):
+    CURRENT_DIR = abspath(".")
     pic_dir = join(CURRENT_DIR, "pic")
     if not exists(pic_dir):
         makedirs(pic_dir)

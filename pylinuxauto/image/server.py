@@ -8,7 +8,7 @@ sudo apt install python3-opencv
 """
 
 from os import makedirs
-from os.path import join, dirname, abspath, exists
+from os.path import join, abspath, exists
 from socketserver import ThreadingMixIn
 from time import time
 from xmlrpc.server import SimpleXMLRPCServer
@@ -26,7 +26,7 @@ def check_connected():
 
 
 def image_put(data):
-    CURRENT_DIR = dirname(abspath("."))
+    CURRENT_DIR = abspath(".")
     pic_dir = join(CURRENT_DIR, "pic")
     if not exists(pic_dir):
         makedirs(pic_dir)
