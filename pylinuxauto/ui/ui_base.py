@@ -7,7 +7,7 @@ import re
 from configparser import ConfigParser, NoSectionError
 from time import sleep
 
-from funnylog import logger
+from funnylog2 import logger
 
 from pylinuxauto.ui.depends import install_depends
 

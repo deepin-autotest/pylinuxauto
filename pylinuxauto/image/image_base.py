@@ -10,7 +10,7 @@ from xmlrpc.client import ServerProxy
 
 import easyprocess
 import pyscreenshot
-from funnylog import logger
+from funnylog2 import logger
 from pylinuxauto import exceptions
 from pylinuxauto.config import config
 

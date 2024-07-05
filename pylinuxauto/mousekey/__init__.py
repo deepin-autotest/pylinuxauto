@@ -6,7 +6,7 @@
 import os
 from time import sleep
 
-from funnylog import logger
+from funnylog2 import logger
 
 from pylinuxauto.mousekey import pyautogui
 
