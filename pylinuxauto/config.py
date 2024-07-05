@@ -1,5 +1,6 @@
 import enum
 import os
+import pathlib
 import platform
 import sys
 import tempfile
@@ -22,12 +23,13 @@ class PlatForm(enum.Enum):
 class _Config:
     """配置模块"""
 
+    PYLINUXAUTO_HOME = pathlib.Path(__file__).parent
+
     PASSWORD = "1"
 
     # IMAGE
     IMAGE_SERVER_IP = "127.0.0.1"
 
-    a = [i.strip() for i in IMAGE_SERVER_IP.split("/") if i]
     IMAGE_PORT = 8889
     IMAGE_NETWORK_RETRY = 1
     IMAGE_PAUSE = 1

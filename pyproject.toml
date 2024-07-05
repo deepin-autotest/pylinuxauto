@@ -16,6 +16,9 @@ requires-python = ">=3.7"
 readme = "README.md"
 license = { text = "GPL2.0" }
 
+[project.scripts]
+sniff = "pylinuxauto.attr.sniff.sniff:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"

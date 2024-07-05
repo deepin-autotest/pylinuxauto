@@ -17,7 +17,7 @@ def install_depends():
         if check_installed:
             # TODO
             # 调研是否能不带权限安装
-            os.system(f"echo '{config.PASSWORD}' | sudo -S apt install {p}")
+            os.system(f"echo '{config.PASSWORD}' | sudo -S apt install {p} -y")
 
     dps = [
         "python3-gi",
@@ -49,7 +49,7 @@ def install_depends():
             os.system(f"rm -rf {px}*")
     else:
         for p in dps:
-            check_installed = os.popen(f"dpkg -s {p}").read().strip() == ""
+            check_installed: bool = os.popen(f"dpkg -s {p}").read().strip() == ""
             if check_installed:
                 os.system(f"echo '{config.PASSWORD}' | sudo -S apt install {p} -y")
 

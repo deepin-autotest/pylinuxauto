@@ -31,12 +31,13 @@ export default defineConfig({
                     ]
                 },
                 {
-                    text: "定位方法",
+                    text: "详细内容",
                     items: [
                         {text: "属性定位", link: "/指南/属性定位"},
                         {text: "图像识别", link: "/指南/图像识别"},
                         {text: "OCR识别", link: "/指南/OCR识别"},
                         {text: "相对位移定位", link: "/指南/相对位移定位"},
+                        {text: "问题", link: "/指南/问题"},
                     ]
                 },
             ],
