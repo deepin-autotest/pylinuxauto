@@ -15,7 +15,8 @@ import numpy as np
 
 class ThreadXMLRPCServer(ThreadingMixIn, SimpleXMLRPCServer):
     pass
-
+def check_connected():
+    return True
 
 def image_put(data):
     CURRENT_DIR = dirname(abspath(__file__))
@@ -85,8 +86,9 @@ def match_image_by_opencv(template_path, source_path, rate=None, multiple=False)
 def server():
     import sys
     sys.path.append(dirname(abspath(__file__)))
-    from conf import conf
-    server = ThreadXMLRPCServer(("0.0.0.0", conf.PORT), allow_none=True)
+    from pylinuxauto.config import config
+    server = ThreadXMLRPCServer(("0.0.0.0", config.IMAGE_PORT), allow_none=True)
+    server.register_function(check_connected, "check_connected")
     server.register_function(image_put, "image_put")
     server.register_function(match_image_by_opencv, "match_image_by_opencv")
     print(f"监听客户端请求... {server.server_address}")

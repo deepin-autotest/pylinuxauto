@@ -49,9 +49,12 @@ def install_depends():
             os.system(f"rm -rf {px}*")
     else:
         for p in dps:
-            check_installed: bool = os.popen(f"dpkg -l {p}").read().strip().startswith("dpkg-query")
+            check_installed: bool = os.popen(f"dpkg -s {p}").read().strip().startswith("dpkg-query")
             if check_installed:
-                os.system(f"echo '{config.PASSWORD}' | sudo -S apt install {p}")
+                os.system(f"echo '{config.PASSWORD}' | sudo -S apt install {p} -y")
+
+    if os.popen("gsettings get org.gnome.desktop.interface toolkit-accessibility").read().strip() == "false":
+        os.system("gsettings set org.gnome.desktop.interface toolkit-accessibility true")
 
 
 if __name__ == '__main__':

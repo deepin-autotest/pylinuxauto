@@ -11,8 +11,6 @@ from time import time
 from typing import TYPE_CHECKING
 from xmlrpc.server import SimpleXMLRPCServer
 
-from pdocr_rpc.conf import setting
-
 if not TYPE_CHECKING:
     from paddleocr import PaddleOCR
 
@@ -54,12 +52,13 @@ def paddle_ocr(pic_path, lang):
 
 
 def server():
-    server = ThreadXMLRPCServer(("0.0.0.0", setting.PORT), allow_none=True)
+    from pylinuxauto.config import config
+    server = ThreadXMLRPCServer(("0.0.0.0", config.OCR_PORT), allow_none=True)
     server.register_function(check_connected, "check_connected")
     server.register_function(image_put, "image_put")
     server.register_function(paddle_ocr, "paddle_ocr")
     print("Listen to client requests ...")
-    print(f"Client request: IP:{setting.PORT}")
+    print(f"Client request: IP:{config.OCR_SERVER_IP}")
     server.serve_forever()
 
 
