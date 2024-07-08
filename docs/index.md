@@ -4,8 +4,8 @@ layout: home
 
 hero:
   name: PyLinuxAuto
-  text: 让 Linux GUI 自动化测试变得更简单
-  tagline: Linux GUI Automation with Python
+  text: Linux GUI Automation with Python
+  tagline: 让 Linux GUI 自动化测试变得更简单
   actions:
     - theme: brand
       text: GitHub
