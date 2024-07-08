@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: GPL-2.0-only
 
 from funnylog2 import logger
+from pylinuxauto import exceptions
 
 from pylinuxauto.attr.depends import install_depends
 
@@ -32,7 +33,7 @@ class Attr():
 
     def __find_child(self, obj, *args, **kwargs):
         try:
-            return obj.child(*args, **kwargs)
+            return obj.child(*args, **kwargs, retry=False)
         except SearchError:
             raise ElementNotFound(*args, **kwargs)
 
@@ -70,9 +71,13 @@ class Attr():
         if not attr_path.startswith("/"):
             raise ValueError
         elements = [i for i in attr_path.split("/") if i]
-        _obj = self.obj
-        for ele in elements:
-            print(_obj)
+        if not elements:
+            raise ValueError
+        try:
+            _obj = root.application(elements[0], retry=False)
+        except SearchError:
+            raise exceptions.ApplicationStartError(elements[0])
+        for ele in elements[1:]:
             _obj = self.__find_child(_obj, ele)
         return _obj
 

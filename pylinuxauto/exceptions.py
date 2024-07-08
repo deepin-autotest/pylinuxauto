@@ -8,7 +8,7 @@ class ElementNotFound(Exception):
         未找到元素
         :param name: 命令
         """
-        err = f"未找到“{name}”元素！"
+        err = f"未找到元素: {name}"
         logger.error(err)
         Exception.__init__(self, err)
 
@@ -22,6 +22,7 @@ class TemplateElementNotFound(BaseException):
         """
         err = f"通过图片资源, 未在屏幕上匹配到元素"
         template = [f"{i}" for i in name]
+        logger.error(*template)
         BaseException.__init__(self, err, *template)
 
 
@@ -33,7 +34,7 @@ class TemplatePictureNotExist(BaseException):
         文件不存在
         :param name: 命令
         """
-        err = f"图片资源：{name} 文件不存在!"
+        err = f"图片资源文件不存在: {name}"
         logger.error(err)
         BaseException.__init__(self, err)
 
@@ -48,7 +49,7 @@ class ApplicationStartError(Exception):
         应用程序未启动
         :param result: 结果
         """
-        err = f"应用程序未启动,{result}"
+        err = f"应用程序未启动: {result}"
         logger.error(err)
         Exception.__init__(self, err)
 
@@ -68,6 +69,6 @@ class NoSetReferencePoint(Exception):
     """没有设置参考点"""
 
     def __init__(self, msg):
-        err = f"没有设置参考点！| {msg}"
+        err = f"没有设置参考点: {msg}"
         logger.error(err)
         Exception.__init__(self, err)
