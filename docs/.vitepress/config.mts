@@ -4,8 +4,8 @@ import {defineConfig} from 'vitepress'
 export default defineConfig({
     base: process.env.VITE_BASE,
     lang: 'zh-CN',
-    title: "PyLinuxAuto | Linux GUI Automation with Python",
-    description: "让 Linux GUI 自动化测试变得更简单",
+    title: "PyLinuxAuto | 让 Linux GUI 自动化测试变得更简单",
+    description: "Linux GUI Automation with Python",
     head: [
         // ['meta', {name: 'referrer', content: 'no-referrer-when-downgrade'}],
         ['link', {rel: 'icon', href: `${process.env.VITE_BASE || '/'}favicon.ico`}],
