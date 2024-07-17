@@ -9,12 +9,6 @@ from time import sleep
 
 from funnylog2 import logger
 
-from pylinuxauto.ui.depends import install_depends
-
-install_depends()
-
-import dbus
-
 from pylinuxauto.ui.wayland_wininfo import WaylandWindowInfo
 from pylinuxauto.config import config
 from pylinuxauto import exceptions
@@ -38,7 +32,6 @@ class ButtonCenter:
         """
         self.appname = appname
         self.number = number
-        # 每个操作步骤之前暂停的时间
         self.pause = pause
         self.config_path = config_path
         self.retry = retry
@@ -69,17 +62,15 @@ class ButtonCenter:
                         break
                 else:
                     raise exceptions.ApplicationStartError(self.appname)
+
                 if isinstance(info, dict):
                     return info
                 elif isinstance(info, list):
                     return info[self.number]
+                else:
+                    raise ValueError
             else:
-                proxy_object = dbus.SessionBus().get_object("org.kde.KWin", "/dde")
-                dbus.Interface(proxy_object, "org.kde.KWin").WindowMove()
-                sleep(self.pause)
-                from pylinuxauto.mousekey import esc
-                esc()
-                return self.wwininfo._window_info()
+                raise EnvironmentError("Unsupported platform")
         return None
 
     def window_location_and_sizes(self):
