@@ -206,6 +206,7 @@ def input_message(
     else:
         pyautogui.typewrite(message=str(message), interval=interval)
 
+input = input_message
 
 def press_key(key: str, interval=0.0):
     """

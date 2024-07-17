@@ -33,6 +33,7 @@ export default defineConfig({
                 {
                     text: "详细内容",
                     items: [
+                        {text: "键鼠操作", link: "/指南/键鼠操作"},
                         {text: "属性定位", link: "/指南/属性定位"},
                         {text: "图像识别", link: "/指南/图像识别"},
                         {text: "OCR识别", link: "/指南/OCR识别"},
