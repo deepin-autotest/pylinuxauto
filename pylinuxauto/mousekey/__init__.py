@@ -206,7 +206,9 @@ def input_message(
     else:
         pyautogui.typewrite(message=str(message), interval=interval)
 
+
 input = input_message
+
 
 def press_key(key: str, interval=0.0):
     """
@@ -366,467 +368,125 @@ def draw_line(start_x, start_y, rel_x, rel_y):
     drag_rel(rel_x, rel_y)
 
 
-def clear():
-    """
-     清空表单
-    """
-    logger.debug("清空表单")
-    hot_key("ctrl", "a")
-    press_key("backspace")
-
-
+# ========== ctrl ==========
 def ctrl_f9():
-    """
-     ctrl_f9 快捷键设置壁纸
-    """
     hot_key("ctrl", "f9")
 
 
-def super_up():
-    """
-     super_up 最大化窗口
-    """
-    hot_key("win", "up")
-
-
-def win_left():
-    """
-    win_left  向左切换工作区
-    """
-    hot_key("win", "left")
-
-
-def win_right():
-    """
-     win_right 向右切换工作区
-    """
-    hot_key("win", "Right")
-
-
-def ctrl_shift_shortcut_down():
-    """
-     ctrl shift ? 唤起快捷键面板
-    """
+def ctrl_shift_forward_slash_down():
     hot_key_down("ctrl", "shift", "/")
 
 
-def ctrl_shift_shortcut_up():
-    """
-     ctrl shift ? 收起快捷键面板
-    """
+def ctrl_shift_forward_slash_up():
     hot_key_up("ctrl", "shift", "/")
 
 
-def shift():
-    """
-     shift
-    """
-    hot_key("shift")
-
-
-def shift_right():
-    """
-     'shift' + 'right'
-    """
-    hot_key("shift", "right")
-
-
-def shift_down():
-    """
-     shift_down
-    """
-    hot_key("shift", "down")
-
-
-def shift_up():
-    """
-     shift_up
-    """
-    hot_key("shift", "up")
-
-
-def tab():
-    """
-     tab
-    """
-    press_key("tab")
-
-
-def esc():
-    """
-     esc
-    """
-    press_key("esc")
-
-
-def right():
-    """
-     right 键盘方向键-右键
-    """
-    press_key("right")
-
-
-def left():
-    """
-     left 键盘方向键-左键
-    """
-    press_key("left")
-
-
-def dot():
-    """
-     dot 键盘点号
-    """
-    press_key(".")
-
-
-def press_left_sometime(sometime: int):
-    """
-     按住键盘方向键-左键一段时间
-    :param sometime: 一段时间
-    """
-    press_key_down("left")
-    sleep(sometime)
-    press_key_up("left")
-
-
-def up():
-    """
-     up 键盘方向键-上键
-    """
-    press_key("up")
-
-
-def press_up_sometime(sometime: int):
-    """
-     按住键盘方向键-上键一段时间
-    :param sometime: 一段时间
-    """
-    press_key_down("up")
-    sleep(sometime)
-    press_key_up("up")
-
-
-def down():
-    """
-     down 键盘方向键-下键
-    """
-    press_key("down")
-
-
-def enter():
-    """
-     enter 回车
-    """
-    press_key("enter")
-
-
 def ctrl_a():
-    """
-     ctrl_a
-    """
     hot_key("ctrl", "a")
 
 
 def ctrl_l():
-    """
-     ctrl_l
-    """
     hot_key("ctrl", "l")
 
 
 def ctrl_g():
-    """
-     ctrl_g
-    """
     hot_key("ctrl", "g")
 
 
 def ctrl_n():
-    """
-     ctrl_n
-    """
     hot_key("ctrl", "n")
 
 
 def ctrl_alt_t():
-    """
-     ctrl_alt_t
-    """
     hot_key("ctrl", "alt", "t")
 
 
 def ctrl_alt_down():
-    """
-     ctrl_alt_down
-    """
     hot_key("ctrl", "alt", "down")
 
 
 def ctrl_alt_up():
-    """
-     ctrl_alt_up
-    """
     hot_key("ctrl", "alt", "up")
 
 
 def ctrl_alt_a():
-    """
-     ctrl_alt_a
-    """
     hot_key("ctrl", "alt", "a")
 
 
 def ctrl_x():
-    """
-     ctrl_x
-    """
     hot_key("ctrl", "x")
 
 
 def ctrl_s():
-    """
-     ctrl_a
-    """
     hot_key("ctrl", "s")
 
 
-def alt_tab():
-    """
-     快捷键alt+table
-    """
-    hot_key("alt", "tab")
-
-
-def alt_m():
-    """
-     ctrl_m
-    """
-    hot_key("alt", "m")
-
-
 def ctrl_f():
-    """
-     ctrl_f
-    """
     hot_key("ctrl", "f")
 
 
 def ctrl_v():
-    """
-     ctrl_v
-    """
-
     hot_key("ctrl", "v")
 
 
 def ctrl_c():
-    """
-     ctrl_c
-    """
-
     hot_key("ctrl", "c")
 
 
-def alt_f4():
-    """
-     alt_f4
-    """
-
-    hot_key("alt", "f4")
-
-
-def alt_f2():
-    """
-     alt_f2
-    """
-
-    hot_key("alt", "f2")
-
-
-def f2():
-    """
-     f2
-    """
-
-    press_key("f2")
-
-
-def f1():
-    """
-     f1
-    """
-
-    press_key("f1")
-
-
-def f3():
-    """
-     f3
-    """
-
-    press_key("f3")
-
-
-def f5():
-    """
-     f5
-    """
-
-    press_key("f5")
-
-
-def space():
-    """
-     space
-    """
-
-    press_key("space")
-
-
-def backspace():
-    """
-     backspace
-    """
-
-    press_key("backspace")
-
-
-def winleft_d():
-    """
-     winleft_d
-    """
-
-    hot_key("winleft", "d")
-
-
-def winleft_q():
-    """
-     winleft_q
-    """
-
-    hot_key("winleft", "q")
-
-
 def ctrl_z():
-    """
-     ctrl_z
-    """
     hot_key("ctrl", "z")
 
 
 def ctrl_y():
-    """
-     ctrl_y
-    """
     hot_key("ctrl", "y")
 
 
-def winleft_e():
-    """
-     winleft_e
-    """
-    hot_key("winleft", "e")
-
-
-def delete():
-    """
-     delete
-    """
-    press_key("delete")
-
-
-def shift_delete():
-    """
-     shift_delete
-    """
-    hot_key("shift", "delete")
-
-
-def shift_left():
-    """
-     shift+左方向键
-    """
-    hot_key("shift", "left")
-
-
 def ctrl_i():
-    """
-     ctrl i
-    """
     hot_key("ctrl", "i")
 
 
 def ctrl_h():
-    """
-     ctrl h
-    """
     hot_key("ctrl", "h")
 
 
 def ctrl_o():
-    """
-     ctrl_o
-    """
-
     hot_key("ctrl", "o")
 
 
 def ctrl_shift_up():
-    """
-     ctrl_shift_up
-    """
-
     hot_key("ctrl", "shift", "up")
 
 
 def ctrl_shift_n():
-    """
-     ctrl_shift_n
-    """
-
     hot_key("ctrl", "shift", "n")
 
 
 def ctrl_shift_down():
-    """ctrl + shift + down"""
     hot_key("ctrl", "shift", "down")
 
 
 def ctrl_shift_left():
-    """ctrl + shift + left"""
     hot_key("ctrl", "shift", "left")
 
 
 def ctrl_shift_right():
-    """ctrl + shift + right"""
     hot_key("ctrl", "shift", "right")
 
 
 def ctrl_up():
-    """ctrl + up"""
-
     hot_key("ctrl", "up")
 
 
 def ctrl_down():
-    """ctrl + down"""
     hot_key("ctrl", "down")
 
 
 def ctrl_left():
-    """ctrl + left"""
     hot_key("ctrl", "left")
 
 
 def ctrl_right():
-    """ctrl + right"""
     hot_key("ctrl", "right")
-
-
-def shift_space():
-    """shift + space"""
-    hot_key("shift", "space")
 
 
 def ctrl_rod():
@@ -835,22 +495,18 @@ def ctrl_rod():
 
 
 def ctrl_add():
-    """ctrl + '+'"""
     hot_key("ctrl", "+")
 
 
 def ctrl_r():
-    """ctrl + r"""
     hot_key("ctrl", "r")
 
 
 def ctrl_shift_r():
-    """ctrl + shift + r"""
     hot_key("ctrl", "shift", "r")
 
 
 def ctrl_shift_z():
-    """ctrl + shift + z"""
     hot_key("ctrl", "shift", "z")
 
 
@@ -862,6 +518,69 @@ def ctrl_scroll(direction, amount_of_scroll=1):
     press_key_up("ctrl")
 
 
+def ctrl_e():
+    hot_key("ctrl", "e")
+
+
+def ctrl_shift_s():
+    hot_key("ctrl", "shift", "s")
+
+
+def ctrl_shift():
+    hot_key("ctrl", "shift")
+
+
+def ctrl_space():
+    hot_key("ctrl", "space")
+
+
+def ctrl_shift_e():
+    hot_key("ctrl", "shift", "e")
+
+
+def ctrl_shift_w():
+    hot_key("ctrl", "shift", "w")
+
+
+def ctrl_alt_v():
+    hot_key("ctrl", "alt", "v")
+
+
+def ctrl_printscreen():
+    hot_key("ctrl", "printscreen")
+
+
+# ========== shift ==========
+
+
+def shift():
+    hot_key("shift")
+
+
+def shift_right():
+    hot_key("shift", "right")
+
+
+def shift_down():
+    hot_key("shift", "down")
+
+
+def shift_up():
+    hot_key("shift", "up")
+
+
+def shift_delete():
+    hot_key("shift", "delete")
+
+
+def shift_left():
+    hot_key("shift", "left")
+
+
+def shift_space():
+    hot_key("shift", "space")
+
+
 def shift_scroll(direction, amount_of_scroll=1):
     """shift + 滚轮"""
     press_key_down("shift")
@@ -870,144 +589,209 @@ def shift_scroll(direction, amount_of_scroll=1):
     press_key_up("shift")
 
 
-def alt_d():
-    """alt + d"""
-    hot_key("alt", "d")
+# ========== alt ==========
 
 
-def ctrl_e():
-    """ctrl + e"""
-
-    hot_key("ctrl", "e")
+def alt_tab():
+    hot_key("alt", "tab")
 
 
-def ctrl_shift_s():
-    """ctrl + shift + s"""
-
-    hot_key("ctrl", "shift", "s")
+def alt_m():
+    hot_key("alt", "m")
 
 
-def ctrl_shift():
-    """ctrl + shift"""
-    hot_key("ctrl", "shift")
+def alt_f4():
+    hot_key("alt", "f4")
 
 
-def ctrl_space():
-    """ctrl + space"""
-    hot_key("ctrl", "space")
-
-
-def ctrl_shift_e():
-    """ctrl+shift+e"""
-    hot_key("ctrl", "shift", "e")
-
-
-def ctrl_shift_w():
-    """ctrl+shift+w"""
-    hot_key("ctrl", "shift", "w")
-
-
-def ctrl_alt_v():
-    """ctrl + alt + v"""
-
-    hot_key("ctrl", "alt", "v")
-
-
-def ctrl_printscreen():
-    """ctrl + printscreen"""
-    hot_key("ctrl", "printscreen")
+def alt_f2():
+    hot_key("alt", "f2")
 
 
 def alt_enter():
-    """alt + enter"""
     hot_key("alt", "enter")
 
 
-def printscreen():
-    """printscreen"""
-    hot_key("printscreen")
-
-
 def alt_o():
-    """alt + o"""
     hot_key("alt", "o")
 
 
 def alt_s():
-    """alt + s"""
     hot_key("alt", "s")
 
 
 def alt_p():
-    """alt + p"""
     hot_key("alt", "p")
 
 
-def p():
-    """p快捷键"""
-    press_key("p")
-
-
-def h():
-    """h"""
-    press_key("h")
-
-
-def f():
-    """f"""
-    press_key("f")
-
-
-def s():
-    """s"""
-    press_key("s")
-
-
-def o():
-    """o"""
-    press_key("o")
-
-
-def r():
-    """r"""
-    press_key("r")
-
-
-def i():
-    """ 按下i快捷键"""
-    press_key("i")
+def alt_d():
+    hot_key("alt", "d")
 
 
 def alt_shift_tab():
-    """快捷键切换应用窗口"""
     hot_key("alt", "shift", "tab")
 
 
 def alt_printscreen():
-    """快捷键 <alt + PrintScreen>"""
     hot_key("alt", "PrintScreen")
 
 
-def super_d():
-    """快捷键 super + d"""
+# ========== win ==========
+
+
+def win_up():
+    hot_key("win", "up")
+
+
+def win_d():
     hot_key("win", "d")
 
 
-def super():
-    """快捷键 super"""
+def win():
     hot_key("win")
 
 
+def win_left():
+    hot_key("win", "left")
+
+
+def win_right():
+    hot_key("win", "Right")
+
+
+def winleft_d():
+    hot_key("winleft", "d")
+
+
+def winleft_q():
+    hot_key("winleft", "q")
+
+
+def winleft_e():
+    hot_key("winleft", "e")
+
+
+# ========== single key ==========
+
+def tab():
+    press_key("tab")
+
+
+def esc():
+    press_key("esc")
+
+
+def right():
+    press_key("right")
+
+
+def left():
+    press_key("left")
+
+
+def up():
+    press_key("up")
+
+
+def down():
+    press_key("down")
+
+
+def dot():
+    press_key(".")
+
+
+def press_left_sometime(sometime: int):
+    """
+    按住键盘方向键-左键一段时间
+    :param sometime: 一段时间
+    """
+    press_key_down("left")
+    sleep(sometime)
+    press_key_up("left")
+
+
+def press_up_sometime(sometime: int):
+    """
+    按住键盘方向键-上键一段时间
+    :param sometime: 一段时间
+    """
+    press_key_down("up")
+    sleep(sometime)
+    press_key_up("up")
+
+
+def enter():
+    press_key("enter")
+
+
+def f1():
+    press_key("f1")
+
+
+def f2():
+    press_key("f2")
+
+
+def f3():
+    press_key("f3")
+
+
+def f4():
+    press_key("f4")
+
+
+def f5():
+    press_key("f5")
+
+
+def space():
+    press_key("space")
+
+
+def backspace():
+    press_key("backspace")
+
+
+def delete():
+    press_key("delete")
+
+
+def printscreen():
+    hot_key("printscreen")
+
+
+def p():
+    press_key("p")
+
+
+def h():
+    press_key("h")
+
+
+def f():
+    press_key("f")
+
+
+def s():
+    press_key("s")
+
+
+def o():
+    press_key("o")
+
+
+def r():
+    press_key("r")
+
+
+def i():
+    press_key("i")
+
+
 def pageup():
-    """上一页"""
     press_key("pageup")
 
 
 def pagedown():
-    """下一页"""
     press_key("pagedown")
-
-
-if __name__ == '__main__':
-    a = click(100, 100)
-    print(a)
