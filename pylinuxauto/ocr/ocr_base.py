@@ -5,18 +5,34 @@
 import json
 import os
 import time
+from typing import List
 from xmlrpc.client import Binary
 from xmlrpc.client import ServerProxy
 
-import easyprocess
-import pyscreenshot
+try:
+    import easyprocess
+    import pyscreenshot
+
+    PYSCREENSHOT = True
+except ImportError:
+    PYSCREENSHOT = False
 from funnylog2 import logger
 
 from pylinuxauto.config import config
 
 
 class OCRBase:
-    wayland_screen_dbus = "qdbus org.kde.KWin /Screenshot screenshotFullscreen"
+    @classmethod
+    def screenshot_cmd(cls):
+        return "dbus-send --session --print-reply=literal --dest=org.kde.KWin /Screenshot org.kde.kwin.Screenshot"
+
+    @classmethod
+    def screenshot_fullscreen_dbus(cls):
+        return f"{cls.screenshot_cmd()}.screenshotFullscreen"
+
+    @classmethod
+    def screenshot_area_dbus(cls, x, y, w, h):
+        return f"{cls.screenshot_cmd()}.screenshotArea int32:{x} int32:{y} int32:{w} int32:{h}"
 
     @classmethod
     def server_url(cls):
@@ -34,46 +50,59 @@ class OCRBase:
             return False
 
     @classmethod
-    def _pdocr_client(cls, lang, picture_abspath=None, network_retry: int = 1):
+    def _pdocr_client(
+            cls,
+            lang,
+            picture_abspath: str = None,
+            screen_bbox: List[int] = None,
+            network_retry: int = 1
+    ):
         """
          通过 RPC 协议进行 OCR 识别。
         :return: 返回 PaddleOCR 的原始数据
         """
-        if not picture_abspath:
-            picture_abspath = config.SCREEN_CACHE
-            if config.IS_X11:
-                try:
-                    pyscreenshot.grab().save(os.path.expanduser(picture_abspath))
-                except easyprocess.EasyProcessError:
-                    ...
+        # 截全屏
+        if picture_abspath is None:
+            if screen_bbox:
+                fullscreen_path = os.popen(cls.screenshot_area_dbus(*screen_bbox)).read().strip().strip("\n")
             else:
-                # config.IS_WAYLAND:
-                picture_abspath = (os.popen(cls.wayland_screen_dbus).read().strip("\n"))
+                if PYSCREENSHOT:
+                    fullscreen_path = config.SCREEN_CACHE
+                    try:
+                        pyscreenshot.grab().save(os.path.expanduser(fullscreen_path))
+                    except easyprocess.EasyProcessError:
+                        ...
+                else:
+                    fullscreen_path = (os.popen(cls.screenshot_fullscreen_dbus()).read().strip().strip("\n"))
+        else:
+            fullscreen_path = picture_abspath
 
-        put_handle = open(os.path.expanduser(picture_abspath), "rb")
+        put_handle = open(os.path.expanduser(fullscreen_path), "rb")
         for _ in range(network_retry + 1):
             try:
                 # 将图片上传到服务端
                 pic_dir = cls.server().image_put(Binary(put_handle.read()))
                 put_handle.close()
                 # 返回识别结果
+                logger.info(f"USE_OCR_SERVER http://{config.OCR_SERVER_IP}")
                 pic_path = cls.server().paddle_ocr(pic_dir, lang)
                 return pic_path
             except OSError:
                 continue
         raise EnvironmentError(
-            f"RPC服务器链接失败: {cls.server_url()}"
+            f"OCR_SERVER访问失败 {cls.server_url()}"
         )
 
     @classmethod
     def _ocr(
             cls,
-            *target_strings,
-            picture_abspath=None,
-            similarity=0.6,
-            return_default=False,
-            return_first=False,
-            lang="ch",
+            *target_strings: str,
+            picture_abspath: str = None,
+            screen_bbox: List[int] = None,
+            similarity: [float, int] = 0.6,
+            return_default: bool = False,
+            return_first: bool = False,
+            lang: str = "ch",
             network_retry: int = 1,
     ):
         """
@@ -89,7 +118,12 @@ class OCRBase:
         :param retry: 连接服务器重试次数
         :return: 返回的坐标是目标字符串所在行的中心坐标。
         """
-        results = cls._pdocr_client(picture_abspath=picture_abspath, lang=lang, network_retry=network_retry)
+        results = cls._pdocr_client(
+            picture_abspath=picture_abspath,
+            lang=lang,
+            screen_bbox=screen_bbox,
+            network_retry=network_retry
+        )
         if return_default:
             return results
         more_map = {}

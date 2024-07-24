@@ -8,15 +8,32 @@ from typing import List, Union
 from xmlrpc.client import Binary
 from xmlrpc.client import ServerProxy
 
-import easyprocess
-import pyscreenshot
+try:
+    import easyprocess
+    import pyscreenshot
+
+    PYSCREENSHOT = True
+except ImportError:
+    PYSCREENSHOT = False
 from funnylog2 import logger
 from pylinuxauto import exceptions
 from pylinuxauto.config import config
 
 
 class ImageBase:
-    wayland_screen_dbus = "qdbus org.kde.KWin /Screenshot screenshotFullscreen"
+
+    @classmethod
+    def screenshot_cmd(cls):
+        return "dbus-send --session --print-reply=literal --dest=org.kde.KWin /Screenshot org.kde.kwin.Screenshot"
+
+    @classmethod
+    def screenshot_fullscreen_dbus(cls):
+        return f"{cls.screenshot_cmd()}.screenshotFullscreen"
+
+    @classmethod
+    def screenshot_area_dbus(cls, x, y, w, h):
+        return f"{cls.screenshot_cmd()}.screenshotArea int32:{x} int32:{y} int32:{w} int32:{h}"
+
 
     @classmethod
     def server_url(cls):
@@ -24,7 +41,6 @@ class ImageBase:
 
     @classmethod
     def server(cls):
-        a = cls.server_url()
         return ServerProxy(cls.server_url(), allow_none=True)
 
     @classmethod
@@ -57,24 +73,23 @@ class ImageBase:
         """
         if rate is None:
             rate = float(config.IMAGE_RATE)
-        screen = config.SCREEN_CACHE
 
-        if not picture_abspath:
+        # 截全屏
+        if picture_abspath is None:
             if screen_bbox:
-                # screen = cls.save_temporary_picture(*screen_bbox) + ".png"
-                ...  # TODO
+                fullscreen_path = os.popen(cls.screenshot_area_dbus(*screen_bbox)).read().strip().strip("\n")
             else:
-                if config.IS_X11:
+                if PYSCREENSHOT:
+                    fullscreen_path = config.SCREEN_CACHE
                     try:
-                        pyscreenshot.grab().save(screen)
+                        pyscreenshot.grab().save(fullscreen_path)
                     except easyprocess.EasyProcessError:
                         ...
                 else:
-                    # config.IS_WAYLAND
-                    screen = os.popen(cls.wayland_screen_dbus).read().strip("\n")
-
+                    fullscreen_path = os.popen(cls.screenshot_fullscreen_dbus()).read().strip().strip("\n")
+        # 指定图片
         else:
-            screen = picture_abspath
+            fullscreen_path = picture_abspath
 
         template_path = ""
         image_path = os.path.expanduser(image_path)
@@ -93,7 +108,7 @@ class ImageBase:
             template_path = image_path
         if not template_path:
             raise ValueError
-        screen_rb = open(screen, "rb")
+        screen_rb = open(fullscreen_path, "rb")
         template_rb = open(template_path, "rb")
         for _ in range(network_retry + 1):
             try:
@@ -101,13 +116,15 @@ class ImageBase:
                 screen_rb.close()
                 tpl_path = cls.server().image_put(Binary(template_rb.read()))
                 template_rb.close()
+                logger.info(f"USE_IMAGE_SERVER http://{config.IMAGE_SERVER_IP}")
                 return cls.server().match_image_by_opencv(
                     tpl_path, screen_path, rate, multiple
                 )
-            except OSError as exc:
-                raise EnvironmentError(
-                    f"IMAGE PRC服务器链接失败. http://{config.IMAGE_SERVER_IP}:{config.IMAGE_PORT}"
-                ) from exc
+            except OSError:
+                continue
+        raise EnvironmentError(
+            f"IMAGE_SERVER访问失败 {cls.server_url()}"
+        )
 
     @classmethod
     def find_element(

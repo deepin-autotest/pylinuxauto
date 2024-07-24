@@ -5,10 +5,6 @@
 import random
 from typing import List
 
-from pylinuxauto.image.depends import install_depends
-
-install_depends()
-
 from pylinuxauto import MouseKeyChainMixin
 from pylinuxauto.config import config
 from pylinuxauto.ocr.ocr_base import OCRBase
@@ -34,7 +30,7 @@ class OCR(MouseKeyChainMixin):
             max_match_number: int = None,
     ):
         self.target_strings = target_strings
-        log_server= servers = self._ocr_servers
+        log_server = servers = self._ocr_servers
         while servers:
             config.OCR_SERVER_IP = random.choice(servers)
             if OCRBase.check_connected() is False:

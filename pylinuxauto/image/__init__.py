@@ -5,10 +5,6 @@
 import random
 from typing import List
 
-from pylinuxauto.image.depends import install_depends
-
-install_depends()
-
 from pylinuxauto.config import config
 from pylinuxauto.image.image_base import ImageBase
 from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin

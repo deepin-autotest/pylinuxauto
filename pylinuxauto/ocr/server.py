@@ -5,7 +5,7 @@
 
 # SPDX-License-Identifier: Apache Software License
 from os import makedirs
-from os.path import join, dirname, abspath, exists
+from os.path import join, abspath, exists
 from socketserver import ThreadingMixIn
 from time import time
 from typing import TYPE_CHECKING
