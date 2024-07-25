@@ -47,6 +47,14 @@ const members = [
       { icon: 'x', link: 'https://twitter.com/mikigo_' },
     ]
   },
+  {
+    avatar: 'https://www.github.com/qisijia367.png',
+    name: 'qisijia367',
+    title: 'Developer',
+    links: [
+      { icon: 'github', link: 'https://github.com/qisijia367' },
+    ]
+  },
 ]
 
 </script>

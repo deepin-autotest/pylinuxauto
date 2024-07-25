@@ -27,7 +27,14 @@ pip install pylinuxauto
 
 ## 使用说明
 
-4 种元素定位方法
+### 键鼠控制
+
+```python
+import pylinuxauto
+
+pylinuxauto.click()
+pylinuxauto.double_click()
+```
 
 ### 使用 Accessibility 操作元素
 
