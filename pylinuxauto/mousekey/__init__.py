@@ -550,6 +550,14 @@ def ctrl_printscreen():
     hot_key("ctrl", "printscreen")
 
 
+def ctrl_tab():
+    hot_key("ctrl", "tab")
+
+
+def ctrl_shift_tab():
+    hot_key("ctrl", "shift", "tab")
+
+
 # ========== shift ==========
 
 
