@@ -73,7 +73,7 @@ class OCRBase:
                     except easyprocess.EasyProcessError:
                         ...
                 else:
-                    fullscreen_path = (os.popen(cls.screenshot_fullscreen_dbus()).read().strip().strip("\n"))
+                    fullscreen_path = os.popen(cls.screenshot_fullscreen_dbus()).read().strip().strip("\n")
         else:
             fullscreen_path = picture_abspath
 

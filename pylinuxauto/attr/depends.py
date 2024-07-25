@@ -15,8 +15,6 @@ def install_depends():
     ]:
         check_installed: bool = os.popen(f"dpkg -s {p}").read().strip() == ""
         if check_installed:
-            # TODO
-            # 调研是否能不带权限安装
             os.system(f"echo '{config.PASSWORD}' | sudo -S apt install {p} -y")
 
     dps = [
