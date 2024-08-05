@@ -48,6 +48,14 @@ const members = [
       { icon: 'github', link: 'https://github.com/qisijia367' },
     ]
   },
+  {
+    avatar: 'https://www.github.com/KeyLee123.png',
+    name: 'KeyLee123',
+    title: 'Developer',
+    links: [
+      { icon: 'github', link: 'https://github.com/KeyLee123' },
+    ]
+  },
 ]
 
 </script>
