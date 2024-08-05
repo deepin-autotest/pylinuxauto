@@ -18,27 +18,22 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         siteTitle: "PyLinuxAuto",
         nav: [
-            {text: '🏠 首页', link: '/index'},
-            {text: '🧭 指南', link: '/指南/README'},
+            {text: '🏠首页', link: '/index'},
+            {text: '🏃快速开始', link: '/快速开始'},
+            {text: '🧭指南', link: '/指南/属性定位'},
+            {text: '👀问题', link: '/问题'},
         ],
 
         sidebar: {
              "/指南/": [
+                {text: "键鼠操作", link: "/指南/键鼠操作"},
                 {
-                    text: "PyLinuxAuto",
+                    text: "元素定位",
                     items: [
-                        {text: "简介", link: "/指南/README"},
-                    ]
-                },
-                {
-                    text: "详细内容",
-                    items: [
-                        {text: "键鼠操作", link: "/指南/键鼠操作"},
                         {text: "属性定位", link: "/指南/属性定位"},
                         {text: "图像识别", link: "/指南/图像识别"},
                         {text: "OCR识别", link: "/指南/OCR识别"},
                         {text: "相对位移定位", link: "/指南/相对位移定位"},
-                        {text: "问题", link: "/指南/问题"},
                     ]
                 },
             ],
