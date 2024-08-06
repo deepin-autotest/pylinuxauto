@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>pylinuxauto</title>
+    <defs>
+        <filter x="-7.7%" y="-3.8%" width="115.4%" height="115.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="-10.4717632%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#6AC900" offset="0%"></stop>
+            <stop stop-color="#008989" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="63.8285579%" y1="-13.3431415%" x2="63.8285579%" y2="161.481369%" id="linearGradient-3">
+            <stop stop-color="#FBFEFF" offset="0%"></stop>
+            <stop stop-color="#B3FFF1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="63.8285579%" y1="-49.6620077%" x2="63.8285579%" y2="161.481369%" id="linearGradient-4">
+            <stop stop-color="#FBFEFF" offset="0%"></stop>
+            <stop stop-color="#B3FFF1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="pylinuxauto" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组" filter="url(#filter-1)" transform="translate(3, 3)">
+            <rect id="矩形" fill="url(#linearGradient-2)" x="0" y="0" width="26" height="26" rx="5.5"></rect>
+            <g id="编组-3" transform="translate(4, 4)">
+                <path d="M14.3311487,5.05569327 L14.4022454,5.05888728 L16,5.29279279 C17.1485726,5.46093968 18,6.4460885 18,7.60690387 L18,13 C18,13.5522847 17.5522847,14 17,14 L12.2663288,14 C13.223809,14 14,13.223809 14,12.2663288 L14,5.40653303 C14,5.38950094 14.0012385,5.3724914 14.0037056,5.35563894 C14.0318136,5.1636395 14.210246,5.03077926 14.4022454,5.05888728 Z M5.70777027,4 C4.76459479,4 4,4.76459479 4,5.70777027 L4,12.593467 C4,12.787513 3.84269464,12.9448183 3.64864865,12.9448183 C3.63161656,12.9448183 3.61460702,12.9435799 3.59775457,12.9411127 L2,12.7072072 C0.851427428,12.5390603 9.09636861e-13,11.5539115 9.09494702e-13,10.3930961 L9.09494702e-13,5 C9.09427066e-13,4.44771525 0.44771525,4 1,4 L5.70777027,4 Z" id="形状结合" fill="#D5E8C0"></path>
+                <path d="M16.9411127,0.402245436 L16.7072072,2 C16.5390603,3.14857257 15.5539115,4 14.3930961,4 L2.42660859,4.00000013 C1.33875802,4.00036592 0.40216465,4.76799874 0.188201972,5.83460034 C0.0628326803,6.4589658 0,6.76749614 0,6.76025075 C0,6.61177487 0,5.15292654 0,4.94652436 C0,4.65411173 0.0448580938,4.33860361 0.134574282,4 C0.744927323,1.64478151 2.87028565,1.33511689e-15 5.30330538,8.8817842e-16 L16.593467,7.21644966e-16 C16.787513,6.85999295e-16 16.9448183,0.157305358 16.9448183,0.351351351 C16.9448183,0.368383438 16.9435799,0.385392982 16.9411127,0.402245436 Z" id="路径" fill="url(#linearGradient-3)"></path>
+                <path d="M17.9411127,11.6184633 L17.7072072,13.2162179 C17.5390603,14.3647904 16.5539115,15.2162179 15.3930961,15.2162179 L3.417608,15.2162182 C2.31909976,15.2168048 1.37664322,15.9993778 1.17417148,17.0790657 C1.05791666,17.7001099 1,18.0070731 1,17.9998764 C1,17.8514005 1,16.5921255 1,16.2769169 C1,15.9075988 1.04270365,15.5333197 1.12811094,15.1540797 C1.72029126,12.8371255 3.80758442,11.2162179 6.19901787,11.2162179 L17.593467,11.2162179 C17.787513,11.2162179 17.9448183,11.3735232 17.9448183,11.5675692 C17.9448183,11.5846013 17.9435799,11.6016108 17.9411127,11.6184633 Z" id="路径" fill="url(#linearGradient-4)" transform="translate(9.5, 14.6081) rotate(-180) translate(-9.5, -14.6081)"></path>
+                <rect id="矩形" fill="#00A165" x="4" y="15" width="1" height="2" rx="0.409909904"></rect>
+                <rect id="矩形" fill="#2FA54B" x="13" y="1" width="1" height="2" rx="0.409909904"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

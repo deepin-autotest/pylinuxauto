@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>pylinuxauto</title>
+    <defs>
+        <filter x="-8.2%" y="-6.2%" width="116.3%" height="116.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="8" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="-10.4717632%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#6AC900" offset="0%"></stop>
+            <stop stop-color="#008989" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="63.8285579%" y1="-13.3431415%" x2="63.8285579%" y2="161.481369%" id="linearGradient-3">
+            <stop stop-color="#FBFEFF" offset="0%"></stop>
+            <stop stop-color="#B3FFF1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="63.8285579%" y1="-49.6620077%" x2="63.8285579%" y2="161.481369%" id="linearGradient-4">
+            <stop stop-color="#FBFEFF" offset="0%"></stop>
+            <stop stop-color="#B3FFF1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="pylinuxauto" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-6" filter="url(#filter-1)" transform="translate(48, 48)">
+            <rect id="矩形" fill="url(#linearGradient-2)" x="0" y="0" width="416" height="416" rx="88"></rect>
+            <g id="编组-3" transform="translate(71, 72)">
+                <path d="M217.07444,71.2948828 C217.578023,68.2312592 220.469815,66.1559362 223.533439,66.659519 L245.5,70.2702703 C261.937252,72.972142 274,87.1795789 274,103.837411 L274,198 C274,203.850146 273.321144,209.541737 272.03791,215.000296 L189.261261,215 C204.580944,215 217,202.580944 217,187.261261 L217,72.2067001 C217,71.9012434 217.024896,71.5962947 217.07444,71.2948828 Z M84.3243243,56 C68.681232,56 56,68.681232 56,84.3243243 L56,199.485811 C56,202.590547 53.4831143,205.107433 50.3783784,205.107433 C50.0675595,205.107433 49.757276,205.081655 49.4507182,205.030365 L28,201.441441 C11.8400229,198.737713 2.00653438e-15,184.752161 0,168.367564 L9.09494702e-13,74 C9.0873438e-13,67.7915019 0.764569846,61.7615787 2.20468993,55.99925 L84.3243243,56 Z" id="形状结合" fill="#D5E8C0"></path>
+                <path d="M251.877212,6.54928184 L248.288288,28 C245.58456,44.1599771 231.599007,56 215.214411,56 L38.841804,56 C21.4398672,56.0002974 6.45254677,68.2725766 3.01985801,85.3325898 C1.0067898,95.3362496 9.09494702e-13,100.280023 9.09494702e-13,100.164012 C9.09494702e-13,97.7883979 9.09494702e-13,74.4468246 9.09494702e-13,71.1443898 C9.09494702e-13,66.4657877 0.717729502,61.4176578 2.1531885,56 C11.9901339,22.7862124 42.5033162,6.36324245e-15 77.1431947,0 L246.332658,-8.8817842e-16 C249.437394,-1.80038657e-14 251.954279,2.51688573 251.954279,5.62162162 C251.954279,5.93244051 251.928502,6.24272402 251.877212,6.54928184 Z" id="路径" fill="url(#linearGradient-3)"></path>
+                <path d="M272.926067,177.99288 L269.315315,199.959441 C266.613444,216.396693 252.406007,228.459441 235.748175,228.459441 L59.1833946,228.459441 C41.643387,228.458054 26.5767011,240.919804 23.2880039,258.148743 C21.5042496,267.494486 20.6126126,272.110928 20.6126126,271.997977 C20.6126126,269.622363 20.6126126,249.473963 20.6126126,244.430625 C20.6126126,238.521535 21.2958709,232.866403 22.6623876,227.46523 C32.1975292,194.30305 62.5349095,171.459441 97.0406933,171.459441 L267.378885,171.459441 C270.483621,171.459441 273.000507,173.976327 273.000507,177.081062 C273.000507,177.386519 272.975611,177.691468 272.926067,177.99288 Z" id="路径" fill="url(#linearGradient-4)" transform="translate(147.3063, 221.7297) rotate(-180) translate(-147.3063, -221.7297)"></path>
+                <rect id="矩形" fill="#00A165" x="58" y="234" width="13" height="19" rx="6.5"></rect>
+                <rect id="矩形" fill="#2FA54B" x="202" y="19" width="13" height="19" rx="6.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

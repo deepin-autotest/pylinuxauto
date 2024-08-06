@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>pylinuxauto</title>
+    <defs>
+        <filter x="-6.7%" y="-4.8%" width="113.5%" height="113.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="-10.4717632%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#6AC900" offset="0%"></stop>
+            <stop stop-color="#008989" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="63.8285579%" y1="-13.3431415%" x2="63.8285579%" y2="161.481369%" id="linearGradient-3">
+            <stop stop-color="#FBFEFF" offset="0%"></stop>
+            <stop stop-color="#B3FFF1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="63.8285579%" y1="-49.6620077%" x2="63.8285579%" y2="161.481369%" id="linearGradient-4">
+            <stop stop-color="#FBFEFF" offset="0%"></stop>
+            <stop stop-color="#B3FFF1" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="pylinuxauto" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-6" filter="url(#filter-1)" transform="translate(6, 6)">
+            <rect id="矩形" fill="url(#linearGradient-2)" x="0" y="0" width="52" height="52" rx="11"></rect>
+            <g id="编组-3" transform="translate(9, 9)">
+                <path d="M27.0093051,8.91186035 C27.0722529,8.5289074 27.4337269,8.26949202 27.8166799,8.33243987 L30.5625,8.78378378 C32.6171565,9.12151775 34,10.8974474 34,12.9796764 L34,24.75 C34,25.4812683 33.915143,26.3177172 33.7547388,27.0000369 L23.5326577,27.0000369 C25.447618,27.0000369 27,25.322618 27,23.4076577 L27,9.02583752 C27,8.98765542 27.003112,8.94953684 27.0093051,8.91186035 Z M10.5405405,6.99990625 C8.58515399,6.99990625 7,8.58515399 7,10.5405405 L7,24.9357264 C7,25.3238184 6.68538928,25.6384291 6.2972973,25.6384291 C6.25844494,25.6384291 6.2196595,25.6352069 6.18133977,25.6287956 L3.375,25.1801802 C1.35500286,24.8422141 9.09494702e-13,23.0940201 9.09494702e-13,21.0459455 L9.09494702e-13,9.25 C9.09494702e-13,8.47393774 0.0955712308,7.72019734 0.275586241,6.99990625 L10.5405405,6.99990625 Z" id="形状" fill="#D5E8C0"></path>
+                <path d="M31.3596514,0.818660229 L30.911036,3.5 C30.57307,5.51999714 28.8248759,7 26.7768013,7 L4.73022549,7 C2.55498341,7.00003717 0.806568346,8.53407208 0.377482252,10.6665737 L0.00152196369,12.5156147 L0,8.89304873 C0,8.30822346 0.0897161877,7.67720722 0.269148563,7 C1.49876674,2.84827655 5.18791452,0 9.51789934,0 L30.6665822,0 C31.0546742,0 31.3692849,0.314610716 31.3692849,0.702702703 C31.3692849,0.728604277 31.3678528,0.754476108 31.3649985,0.780200035 L31.3596514,0.818660229 Z" id="路径" fill="url(#linearGradient-3)"></path>
+                <path d="M2.58581825,33.1833201 L3.03716216,30.4375 C3.37489613,28.3828435 5.15082574,27 7.23305476,27 L29.3036522,27 C31.4742282,27.0001716 33.2167913,25.3484532 33.652803,23.228266 L33.986625,21.4951525 C33.9955418,21.4506824 34,21.4298592 34,21.432683 L34,24.878602 C34,25.6172382 33.9145927,26.4491297 33.7437781,27.1242764 C32.5518854,31.2695489 28.8847129,34 24.5714899,34 L3.27921589,34 C2.89112391,34 2.57651319,33.6853893 2.57651319,33.2972973 C2.57651319,33.2591152 2.57962518,33.2209966 2.58581825,33.1833201 Z" id="路径" fill="url(#linearGradient-4)"></path>
+                <rect id="矩形" fill="#00A165" x="7" y="29" width="2" height="3" rx="0.819819768"></rect>
+                <rect id="矩形" fill="#2FA54B" x="25" y="2" width="2" height="3" rx="0.819819768"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
