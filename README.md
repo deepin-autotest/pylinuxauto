@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/funny-dream/youqu3">
-    <img src="./docs/assets/logo.png" width="100" alt="YouQu3">
+  <a href="https://github.com/linuxdeepin-QAeggs/pylinuxauto">
+    <img src="./docs/assets/logo.png" width="100" alt="PyLinuxAuto">
   </a>
 </p>
 <h1 align="center">PyLinuxAuto</h1>
@@ -13,7 +13,7 @@
 
 ![PyPI](https://img.shields.io/pypi/v/pylinuxauto?style=flat&logo=github&link=https%3A%2F%2Fpypi.org%2Fproject%2Fpylinuxauto%2F&color=%23F79431)
 ![Downloads](https://static.pepy.tech/badge/pylinuxauto)
-![Hits](https://hits.sh/github.com/funny-dream/pylinuxauto.svg?style=flat&label=visitors&color=blue)
+![Hits](https://hits.sh/github.com/linuxdeepin-QAeggs/pylinuxauto.svg?style=flat&label=visitors&color=blue)
 
 **PyLinuxAuto** 是一个用于 Linux 桌面 GUI 自动化测试的 Python 模块，支持多种元素定位方法和键鼠操作。
 

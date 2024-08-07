@@ -5,7 +5,7 @@ layout: home
 hero:
   name: PyLinuxAuto
   text: Linux GUI Automation with Python
-  tagline: Easy to use, ready for production.
+  tagline: Empower your RPA workflow with seamless Linux GUI automation, powered by Python.
   image:
     src: /logo.png
     alt: PyLinuxAuto
