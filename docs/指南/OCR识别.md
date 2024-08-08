@@ -61,7 +61,7 @@ cd image/
 vim server.py
 ```
 
-写入一下内容：
+写入以下内容：
 
 ```python
 from pylinuxauto.image.server import server

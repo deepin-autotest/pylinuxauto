@@ -21,7 +21,13 @@ export default defineConfig({
             {text: '🏠首页', link: '/index'},
             {text: '🏃快速开始', link: '/快速开始'},
             {text: '🧭指南', link: '/指南/属性定位'},
-            {text: '👀问题', link: '/问题'},
+            {text: '🎵规划', items:[
+                    {text: "规划", link: '/规划/PyLinuxAuto设计方案'},
+                    {text: "YouQu3", link: 'https://youqu.uniontech.com/v3'},
+                    {text: "UMTK", link: 'https://youqu.uniontech.com/umtk'},
+                ]
+            },
+            {text: "SIG", link: '/SIG.md'},
         ],
 
         sidebar: {
@@ -34,6 +40,17 @@ export default defineConfig({
                         {text: "图像识别", link: "/指南/图像识别"},
                         {text: "OCR识别", link: "/指南/OCR识别"},
                         {text: "相对位移定位", link: "/指南/相对位移定位"},
+                    ]
+                },
+            ],
+             "/规划/": [
+                {text: "框架设计", link: "/规划/PyLinuxAuto设计方案"},
+                {
+                    text: "子方案",
+                    items: [
+                        {text: "属性定位", link: "/规划/属性定位设计方案"},
+                        {text: "图像识别", link: "/规划/图像识别设计方案"},
+                        {text: "OCR识别", link: "/规划/OCR识别设计方案"},
                     ]
                 },
             ],
