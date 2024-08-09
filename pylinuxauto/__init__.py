@@ -6,6 +6,7 @@ from pylinuxauto.attr import Attr
 from pylinuxauto.attr.dogtail.tree import Node
 from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin
 from pylinuxauto.mousekey import *
+from pylinuxauto.sh import *
 
 def find_element_by_attr_name(
         *,
