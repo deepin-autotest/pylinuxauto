@@ -4,9 +4,15 @@ from typing import Union, List
 os.environ["DISPLAY"] = ":0"
 from pylinuxauto.attr import Attr
 from pylinuxauto.attr.dogtail.tree import Node
+from pylinuxauto.ui import UI
 from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin
 from pylinuxauto.mousekey import *
 from pylinuxauto.sh import *
+
+
+def is_child_find_element_by_attr(appname, child_name):
+    return Attr(appname=appname).obj.isChild(child_name=child_name)
+
 
 def find_element_by_attr_name(
         *,
@@ -90,9 +96,9 @@ def find_element_by_ocr(
 
 
 def find_element_by_ui(
+        btn_name,
         appname,
         config_path,
-        btn_name,
         number=-1,
         pause=1,
         retry=1,
@@ -103,9 +109,9 @@ def find_element_by_ui(
 ) -> MouseKeyChainMixin:
     from pylinuxauto.ui import UI
     return UI().find_element_by_ui(
+        btn_name,
         appname,
         config_path,
-        btn_name,
         number=number,
         pause=pause,
         retry=retry,

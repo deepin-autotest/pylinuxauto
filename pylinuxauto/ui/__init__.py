@@ -1,4 +1,4 @@
-from pylinuxauto import MouseKeyChainMixin
+from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin
 from pylinuxauto.ui.ui_base import ButtonCenter
 
 
@@ -6,9 +6,9 @@ class UI(MouseKeyChainMixin):
 
     def find_element_by_ui(
             self,
+            btn_name,
             appname,
             config_path,
-            btn_name,
             number=-1,
             pause=1,
             retry=1,
@@ -19,7 +19,7 @@ class UI(MouseKeyChainMixin):
     ):
         self.result = ButtonCenter(
             appname=appname,
-            config_path=config_path,
+            config_path=str(config_path),
             number=number,
             pause=pause,
             retry=retry
