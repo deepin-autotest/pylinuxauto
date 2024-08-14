@@ -22,7 +22,7 @@
 ## 安装
 
 ```bash
-pip install pylinuxauto
+pip3 install pylinuxauto
 ```
 
 ## 使用说明

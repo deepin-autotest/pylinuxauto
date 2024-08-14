@@ -8,10 +8,16 @@ from pylinuxauto.ui import UI
 from pylinuxauto.mousekey.mkmixin import MouseKeyChainMixin
 from pylinuxauto.mousekey import *
 from pylinuxauto.sh import *
+from pylinuxauto.screenshot import *
 
 
 def is_child_find_element_by_attr(appname, child_name):
     return Attr(appname=appname).obj.isChild(child_name=child_name)
+
+
+def window_center_by_ui(appname: str, config_path: str):
+    from pylinuxauto.ui.ui_base import ButtonCenter
+    return ButtonCenter(appname=appname, config_path=config_path).window_center()
 
 
 def find_element_by_attr_name(
