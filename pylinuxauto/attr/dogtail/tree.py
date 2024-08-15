@@ -422,7 +422,6 @@ class Node(object):
         except NotImplementedError:
             return None
 
-    @property
     def center(self):
         """
         A tuple containing the center position of the Accessible:(x, y)
@@ -1368,9 +1367,10 @@ if not os.path.exists('/tmp/sniff_running.lock'):
         except OSError:  # pragma: no cover
             pass
 elif 'sniff' not in sys.argv[0]:
-    print("Dogtail: Warning: Running sniff has been detected.")
-    print("Please make sure sniff has the 'Auto Refresh' disabled.")
-    print("NOTE: Running scripts with sniff present is not recommended.")
+    ...
+    # print("Dogtail: Warning: Running sniff has been detected.")
+    # print("Please make sure sniff has the 'Auto Refresh' disabled.")
+    # print("NOTE: Running scripts with sniff present is not recommended.")
 
 
 # Convenient place to set some debug variables:

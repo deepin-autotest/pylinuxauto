@@ -52,7 +52,7 @@ class SniffApp(object):
                 os.path.join(__file__, os.path.pardir, os.path.pardir))
             if path == '/':  # in case the path is /bin/sniff
                 path = '/usr'
-            self.builder.add_from_file(path + '/share/dogtail/glade/sniff.ui')
+            self.builder.add_from_file(path + '/sniff/sniff.ui')
         self.app = self.builder.get_object(self.appName)
         try:
             self.app.set_icon_from_file('../icons/dogtail-head.svg')
@@ -103,8 +103,9 @@ class SniffApp(object):
         if not os.path.exists('/tmp/sniff_refresh.lock'):
             self.autoRefreshMenuItem.set_active(True)
         else:
-            print("Sniff warning: A running 'dogtail' script has been detected.")
-            print("Disabling 'Auto Refresh', however this still is not recommended.")
+            ...
+            # print("Sniff warning: A running 'dogtail' script has been detected.")
+            # print("Disabling 'Auto Refresh', however this still is not recommended.")
 
     def showAbout(self, *args):
         if not self.about:
@@ -661,7 +662,7 @@ def loadIcon(iconName):
             os.path.join(__file__, os.path.pardir, os.path.pardir))
         if path == '/':
                 path = '/usr'
-        iconName = os.path.join(path, 'share/dogtail/icons/', iconName)
+        iconName = os.path.join(path, 'sniff/icons/', iconName)
         pixbuf = GdkPixbuf.Pixbuf.new_from_file(iconName)
     return pixbuf
 

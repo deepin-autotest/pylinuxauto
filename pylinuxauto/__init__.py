@@ -14,6 +14,9 @@ from pylinuxauto.screenshot import *
 def is_child_find_element_by_attr(appname, child_name):
     return Attr(appname=appname).obj.isChild(child_name=child_name)
 
+def find_element_children_by_attr(appname, child_name):
+    return Attr(appname=appname).obj.child(child_name=child_name).children
+
 
 def window_center_by_ui(appname: str, config_path: str):
     from pylinuxauto.ui.ui_base import ButtonCenter
