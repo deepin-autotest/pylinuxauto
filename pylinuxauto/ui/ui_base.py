@@ -505,9 +505,9 @@ class ButtonCenter:
         btn_x = btn_y = button_w = button_y = ""
         sleep(self.pause)
         conf = ConfigParser()
-        config.read(self.config_path)
-        direction = config.get(btn_name, "direction")
-        position = [int(i.strip()) for i in config.get(btn_name, "location").split(",")]
+        conf.read(self.config_path)
+        direction = conf.get(btn_name, "direction")
+        position = [int(i.strip()) for i in conf.get(btn_name, "location").split(",")]
         default_point = ("left_bottom", "left_top", "right_top", "right_bottom")
         default_boundary_point = (
             "top_center",
@@ -544,9 +544,9 @@ class ButtonCenter:
         :return: (相对坐标，参考系）
         """
         conf = ConfigParser()
-        config.read(self.config_path)
-        direction = config.get(btn_name, "direction")
-        position = [int(i.strip()) for i in config.get(btn_name, "location").split(",")]
+        conf.read(self.config_path)
+        direction = conf.get(btn_name, "direction")
+        position = [int(i.strip()) for i in conf.get(btn_name, "location").split(",")]
         return position, direction
 
     def get_windows_number(self, name: str) -> int:

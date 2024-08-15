@@ -9,7 +9,7 @@ def screenshot_full():
     return os.popen(f"{_screenshot_cmd()}.screenshotFullscreen").read().strip().strip("\n")
 
 
-def screenshot_area_dbus(x, y, w, h):
+def screenshot_area(x, y, w, h):
     return (
         os.popen(f"{_screenshot_cmd()}.screenshotArea int32:{x} int32:{y} int32:{w} int32:{h}")
         .read()

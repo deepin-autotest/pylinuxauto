@@ -102,7 +102,7 @@ class ImageBase:
             elif os.path.exists(f"{image_path}.jpeg"):
                 template_path = f"{image_path}.jpeg"
             else:
-                logger.warning(f"The image format is not supported. Please confirm your image_path again")
+                logger.error(f"The image format is not supported. Please confirm your image_path again")
         else:
             # image_path参数带有后缀名，不做任何添加
             template_path = image_path
