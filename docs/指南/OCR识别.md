@@ -51,8 +51,8 @@ pip install pylinuxauto
 创建一个目录：
 
 ```bash
-mkdir image
-cd image/
+mkdir ocr
+cd ocr/
 ```
 
 创建服务端代码文件：
@@ -64,7 +64,7 @@ vim server.py
 写入以下内容：
 
 ```python
-from pylinuxauto.image.server import server
+from pylinuxauto.ocr.server import server
 
 server()
 ```
