@@ -2,8 +2,10 @@ import os
 import re
 import subprocess
 import sys
-
 from funnylog2 import logger
+
+import pylinuxauto
+
 
 class ShellExecutionFailed(Exception):
 
@@ -11,7 +13,6 @@ class ShellExecutionFailed(Exception):
         err = f"Shell执行失败: {msg}"
         logger.error(err)
         Exception.__init__(self, err)
-
 
 
 def _run(command, _input=None, timeout=None, check=False, executable=None, **kwargs):
@@ -27,6 +28,7 @@ def _run(command, _input=None, timeout=None, check=False, executable=None, **kwa
                 retcode, process.args, output=stdout, stderr=stderr
             )
     return subprocess.CompletedProcess(process.args, retcode, stdout, stderr)
+
 
 def _getstatusoutput(command, timeout, executable):
     kwargs = {
@@ -53,6 +55,7 @@ def _getstatusoutput(command, timeout, executable):
     if data[-1:] == "\n":
         data = data[:-1]
     return exitcode, data
+
 
 def run(
         command: str,
@@ -82,6 +85,7 @@ def run(
     if return_code:
         return stdout, exitcode
     return stdout
+
 
 def sudo_run(
         command,
@@ -115,10 +119,16 @@ def sudo_run(
         res[0] = res[0].lstrip("请输入密码●")
         return res
 
+
 def copy(source, dest):
     return run(f"cp -rf {source} {dest}")
+
 
 def apt_policy(package_name):
     ret = run(f"apt policy {package_name}")
     ret = re.search("已安装：(.*)", ret).group(1)
     return ret
+
+
+def move(source, dest):
+    return run(f"move -rf {source} {dest}")

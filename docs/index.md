@@ -12,8 +12,8 @@ hero:
 
 features:
   - icon: 🖥️
-    title: 专注于 Linux GUI 自动化测试
-    details: 支持多种元素定位方案，完美支持 Linux GUI 自动化测试。
+    title: 专注于 Linux GUI 自动化
+    details: 支持多种元素定位方案，完美支持 Linux GUI 自动化。
   - icon: 🐍
     title: 纯 Python 接口，轻量化依赖
     details: 统一的 Python 调用接口，使用简单方便，环境依赖少。
