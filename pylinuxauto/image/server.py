@@ -7,8 +7,7 @@
 sudo apt install python3-opencv
 """
 
-from os import makedirs
-from os.path import join, abspath, exists
+import os
 from socketserver import ThreadingMixIn
 from time import time
 from xmlrpc.server import SimpleXMLRPCServer
@@ -26,12 +25,12 @@ def check_connected():
 
 
 def image_put(data):
-    CURRENT_DIR = abspath(".")
-    pic_dir = join(CURRENT_DIR, "pic")
-    if not exists(pic_dir):
-        makedirs(pic_dir)
+    CURRENT_DIR = os.path.abspath(".")
+    pic_dir = os.path.join(CURRENT_DIR, "pic")
+    if not os.path.exists(pic_dir):
+        os.makedirs(pic_dir)
 
-    pic_path = join(pic_dir, f'pic_{time()}.png')
+    pic_path = os.path.join(pic_dir, f'pic_{time()}.png')
     handle = open(pic_path, "wb")
     handle.write(data.data)
     handle.close()
@@ -92,7 +91,7 @@ def match_image_by_opencv(template_path, source_path, rate=None, multiple=False)
 
 def server():
     import sys
-    sys.path.append(dirname(abspath(__file__)))
+    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from pylinuxauto.config import config
     server = ThreadXMLRPCServer(("0.0.0.0", config.IMAGE_PORT), allow_none=True)
     server.register_function(check_connected, "check_connected")
