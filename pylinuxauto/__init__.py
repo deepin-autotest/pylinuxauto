@@ -23,6 +23,11 @@ def window_center_by_ui(appname: str, config_path: str):
     return ButtonCenter(appname=appname, config_path=config_path).window_center()
 
 
+def btn_size_by_ui(appname: str, config_path: str, btn_name: str):
+    from pylinuxauto.ui.ui_base import ButtonCenter
+    return ButtonCenter(appname=appname, config_path=config_path).btn_size(btn_name)
+
+
 def find_element_by_attr_name(
         *,
         appname: str = "",
