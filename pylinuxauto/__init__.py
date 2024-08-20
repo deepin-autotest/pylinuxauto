@@ -93,6 +93,7 @@ def find_element_by_ocr(
         pause: [int, float] = None,
         timeout: [int, float] = None,
         max_match_number: int = None,
+        bbox: dict = None,
 ) -> MouseKeyChainMixin:
     from pylinuxauto.ocr import OCR
     return OCR().find_element_by_ocr(
@@ -106,17 +107,7 @@ def find_element_by_ocr(
         pause=pause,
         timeout=timeout,
         max_match_number=max_match_number,
-    )
-
-
-def find_element_by_ocr_range(text, x1=None, x2=None, y1=None, y2=None):
-    from pylinuxauto.ocr import OCR
-    return OCR.find_element_by_ocr_range(
-        text,
-        x1=x1,
-        x2=x2,
-        y1=y1,
-        y2=y2,
+        bbox=bbox,
     )
 
 

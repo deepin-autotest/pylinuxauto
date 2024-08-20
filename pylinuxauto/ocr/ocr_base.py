@@ -233,6 +233,7 @@ class OCRBase:
             pause: [int, float] = None,
             timeout: [int, float] = None,
             max_match_number: int = None,
+            bbox: dict = None,
     ):
         """
         通过 OCR 进行识别。
@@ -248,6 +249,20 @@ class OCRBase:
         :param pause: 重试间隔时间,单位秒
         :param timeout: 最大匹配超时,单位秒
         :param max_match_number: 最大匹配次数
+        :param bbox:
+        接收一个字典，包含一个区域，在区域内进行识别，用于干扰较大时提升OCR识别精准度，传入该参数默认返回唯一坐标(可修改'return_one'值)
+            字典字段:
+                start_x: 开始 x 坐标（左上角）
+                start_y: 开始 y 坐标（左上角）
+                w: 宽度
+                h: 高度
+                end_x: 结束 x 坐标（右下角）
+                end_y: 结束 y 坐标（右下角）
+                return_one: True/False（默认True）
+                注意 ： end_x + end_y 与 w + h 为互斥关系, 必须且只能传入其中一组
+            示例：
+                {"start_x": 0, "start_y": 0, "w": 100, "h": 100, "return_one": False}
+                {"start_x": 0, "start_y": 0, "end_x": 100, "end_y": 100}
         :return: 返回的坐标是目标字符串所在行的中心坐标。
         """
         network_retry = network_retry if network_retry else config.OCR_NETWORK_RETRY
@@ -262,6 +277,32 @@ class OCRBase:
             if during > timeout:
                 return False
             _start = time.time()
+
+            return_one = None
+            if bbox is not None:
+                start_x = bbox.get("start_x") if bbox.get("start_x") is not None else None
+                start_y = bbox.get("start_y") if bbox.get("start_y") is not None else None
+                w = bbox.get("w") if bbox.get("w") is not None else None
+                h = bbox.get("h") if bbox.get("h") is not None else None
+                end_x = bbox.get("end_x") if bbox.get("end_x") is not None else None
+                end_y = bbox.get("end_y") if bbox.get("end_y") is not None else None
+                return_one = True if bbox.get("return_one") else False
+
+                if start_x is None or start_y is None:
+                    raise ValueError("缺失 start_x 或 start_y 坐标")
+
+                wh_provided = w is not None and h is not None
+                end_xy_provided = end_x is not None and end_y is not None
+
+                if not (wh_provided ^ end_xy_provided):
+                    raise ValueError("end_x + end_y 与 w + h 为互斥关系, 必须且只能传入其中一组")
+
+                if end_xy_provided:
+                    w = end_x - start_x
+                    h = end_y - start_y
+                from pylinuxauto import screenshot_area
+                picture_abspath = screenshot_area(start_x, start_y, w, h)
+
             res = cls._ocr(
                 *target_strings,
                 picture_abspath=picture_abspath,
@@ -276,57 +317,14 @@ class OCRBase:
             if res is False:
                 time.sleep(pause)
                 continue
-            return res
-        return False
 
-    @classmethod
-    def ocr_find_by_range(cls, text, x1=None, x2=None, y1=None, y2=None):
-        """
-        OCR在当前界面中识别到多个关键词时，通过区域筛选出对应关键词并返回坐标
-        :param text: 页面范围内查找关键词，可自由使用以下参数划定查找区域
-        :param x1: x坐标开始范围，有效区域为大于 x1 区域
-        :param x2: x坐标结束范围，有效区域为小于 x1 区域
-        :param y1: y坐标开始范围，有效区域为大于 y1 区域
-        :param y2: y坐标结束范围，有效区域为小于 y2 区域
-        :return: 坐标元组 (x, y)
-
-        注意：该方法设计是为了筛选出唯一坐标，所以需要特定区域内只有一组OCR关键词，若任有多组数据会直接报错，请增加精度
-
-        以默认分辨率 1920*1080 为例，多种示例情况如下：
-        示例1（识别左半屏幕关键字）：ocr_find_by_range(x2=960)
-        示例2（识别下半屏幕关键字）：ocr_find_by_range(y1=540)
-        示例3（识别右下半屏幕关键字）：ocr_find_by_range(x1=960, y1=540)
-        示例4（识别特定区域 ：100*900-200*950 内关键字）：ocr_find_by_range(x1=100, y1=900, x2=200, y2=950)
-        """
-        defaults = {"x1": 0, "x2": 1920, "y1": 0, "y2": 1080}
-
-        x1 = x1 if x1 is not None else defaults["x1"]
-        x2 = x2 if x2 is not None else defaults["x2"]
-        y1 = y1 if y1 is not None else defaults["y1"]
-        y2 = y2 if y2 is not None else defaults["y2"]
-
-        if x1 > x2 or y1 > y2:
-            raise ValueError("x1 > x2 or y1 > y2")
-
-        results = []
-        ocr_return = cls.ocr(text)
-        if isinstance(ocr_return, dict):
-            for _, value in ocr_return.items():
-                if x1 <= value[0] <= x2 and y1 <= value[1] <= y2:
-                    results.append(value)
-            if len(results) == 0:
-                raise ValueError(
-                    f"范围内[{x1, y1} - {x2, y2}]未识别到关键词[{text}]，请增加识别精度，识别结果为：{results}"
-                )
-            elif len(results) == 1:
-                return results[0]
+            if return_one is None or return_one is False:
+                return res
+            elif return_one:
+                if isinstance(res, tuple):
+                    return res
+                else:
+                    raise ValueError(f"return_one为True时仅返回唯一坐标，屏幕出现多组坐标：{res}")
             else:
-                raise ValueError(
-                    f"范围内[{x1, y1} - {x2, y2}]识别到多组关键词[{text}]，请增加识别精度，识别结果为：{results}"
-                )
-        if x1 <= ocr_return[0] <= x2 and y1 <= ocr_return[1] <= y2:
-            return ocr_return
-        else:
-            raise ValueError(
-                f"范围内[{x1, y1} - {x2, y2}]识别不到关键词，请增加识别精度，识别结果为：{ocr_return}"
-            )
+                raise TypeError("return_one的值只能是布尔值")
+        return False

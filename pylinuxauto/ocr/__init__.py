@@ -27,6 +27,7 @@ class OCR(MouseKeyChainMixin):
         pause: [int, float] = None,
         timeout: [int, float] = None,
         max_match_number: int = None,
+        bbox: dict = None,
     ):
         self.target_strings = target_strings
         log_server = servers = self._ocr_servers
@@ -50,19 +51,10 @@ class OCR(MouseKeyChainMixin):
             pause=pause,
             timeout=timeout,
             max_match_number=max_match_number,
+            bbox=bbox,
         )
 
         if isinstance(self.result, tuple):
             self.x, self.y = self.result
 
         return self
-
-    @classmethod
-    def find_element_by_ocr_range(cls, text, x1=None, x2=None, y1=None, y2=None):
-        return OCRBase.ocr_find_by_range(
-            text,
-            x1=x1,
-            x2=x2,
-            y1=y1,
-            y2=y2,
-        )
