@@ -11,23 +11,22 @@ from pylinuxauto.ocr.ocr_base import OCRBase
 
 
 class OCR(MouseKeyChainMixin):
-
     @property
     def _ocr_servers(self) -> List[str]:
         return [i.strip() for i in config.OCR_SERVER_IP.split("/") if i]
 
     def find_element_by_ocr(
-            self,
-            *target_strings,
-            picture_abspath: str = None,
-            similarity: [int, float] = 0.6,
-            return_default: bool = False,
-            return_first: bool = False,
-            lang: str = "ch",
-            network_retry: int = None,
-            pause: [int, float] = None,
-            timeout: [int, float] = None,
-            max_match_number: int = None,
+        self,
+        *target_strings,
+        picture_abspath: str = None,
+        similarity: [int, float] = 0.6,
+        return_default: bool = False,
+        return_first: bool = False,
+        lang: str = "ch",
+        network_retry: int = None,
+        pause: [int, float] = None,
+        timeout: [int, float] = None,
+        max_match_number: int = None,
     ):
         self.target_strings = target_strings
         log_server = servers = self._ocr_servers
@@ -57,3 +56,13 @@ class OCR(MouseKeyChainMixin):
             self.x, self.y = self.result
 
         return self
+
+    @classmethod
+    def find_element_by_ocr_range(cls, text, x1=None, x2=None, y1=None, y2=None):
+        return OCRBase.ocr_find_by_range(
+            text,
+            x1=x1,
+            x2=x2,
+            y1=y1,
+            y2=y2,
+        )
