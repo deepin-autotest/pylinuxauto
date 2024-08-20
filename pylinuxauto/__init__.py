@@ -109,6 +109,17 @@ def find_element_by_ocr(
     )
 
 
+def find_element_by_ocr_range(text, x1=None, x2=None, y1=None, y2=None):
+    from pylinuxauto.ocr import OCR
+    return OCR.find_element_by_ocr_range(
+        text,
+        x1=x1,
+        x2=x2,
+        y1=y1,
+        y2=y2,
+    )
+
+
 def find_element_by_ui(
         btn_name,
         appname,
