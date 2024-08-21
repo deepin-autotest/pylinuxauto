@@ -328,8 +328,11 @@ class OCRBase:
                 continue
 
             if return_one is None:
-                if all(value_ is False for value_ in res.values()):
-                    return False
+                if isinstance(res, tuple):
+                    return res
+                elif isinstance(res, dict):
+                    if all(value_ is False for value_ in res.values()):
+                        return False
                 return res
             elif return_one:
                 if isinstance(res, tuple):
