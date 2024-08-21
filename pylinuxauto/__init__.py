@@ -12,10 +12,15 @@ from pylinuxauto.screenshot import *
 
 
 def is_child_find_element_by_attr(appname, child_name):
-    return Attr(appname=appname).obj.isChild(child_name=child_name)
+    return Attr(appname=appname).obj.is_child(child_name=child_name)
 
 def find_element_children_by_attr(appname, child_name):
     return Attr(appname=appname).obj.child(child_name=child_name).children
+
+
+def window_sizes_by_ui(appname: str, config_path: str):
+    from pylinuxauto.ui.ui_base import ButtonCenter
+    return ButtonCenter(appname=appname, config_path=config_path).window_sizes()
 
 
 def window_center_by_ui(appname: str, config_path: str):
@@ -58,7 +63,7 @@ def find_element_by_attr_path(attr_path) -> Node:
 
 
 def find_element_by_image(
-        *widget,
+        *images,
         rate: Union[float, int] = None,
         multiple: bool = False,
         picture_abspath: str = None,
@@ -70,7 +75,7 @@ def find_element_by_image(
 ) -> MouseKeyChainMixin:
     from pylinuxauto.image import Image
     return Image().find_element_by_image(
-        *widget,
+        *images,
         rate=rate,
         multiple=multiple,
         picture_abspath=picture_abspath,

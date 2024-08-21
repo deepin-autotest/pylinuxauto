@@ -1044,6 +1044,8 @@ class Node(object):
             found = False
         return found
 
+    is_child = isChild
+
     def menu(self, menuName, recursive=True, showingOnly=None):
         """
         Search below this node for a menu with the given name.
