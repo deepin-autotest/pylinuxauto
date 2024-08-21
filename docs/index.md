@@ -56,6 +56,14 @@ const members = [
       { icon: 'github', link: 'https://github.com/KeyLee123' },
     ]
   },
+  {
+    avatar: 'https://www.github.com/Marszzz1116.png',
+    name: 'Marszzz1116',
+    title: 'Developer',
+    links: [
+      { icon: 'github', link: 'https://github.com/Marszzz1116' },
+    ]
+  },
 ]
 
 </script>
