@@ -19,6 +19,7 @@ except ImportError:
 from funnylog2 import logger
 
 from pylinuxauto.config import config
+from pylinuxauto.exceptions import ElementNotFound
 
 
 class OCRBase:
@@ -327,23 +328,37 @@ class OCRBase:
                 continue
 
             if return_one is None:
+                if all(value_ is False for value_ in res.values()):
+                    return False
                 return res
             elif return_one:
                 if isinstance(res, tuple):
                     res = (res[0] + start_x, res[1] + start_y)
+                    logger.debug(f"OCR使用bbox参数识别到字符，重新计算后结果 [{target_strings[0]}]—>{res}")
                     return res
                 else:
                     new_res = {}
                     for key, value in res.items():
-                        new_res[key] = (value[0] + start_x, value[1] + start_y)
-                    raise ValueError(f"return_one为True时仅返回唯一坐标，屏幕出现多组坐标：{new_res}")
+                        if isinstance(value, tuple):
+                            new_res[key] = (value[0] + bbox.get("start_x"), value[1] + bbox.get("start_y"))
+                        else:
+                            new_res[key] = value
+                    raise ValueError(f"使用bbox参数，return_one值为True时仅返回唯一坐标，结果不符：{new_res}")
             elif return_one is False:
                 if isinstance(res, tuple):
                     res = (res[0] + start_x, res[1] + start_y)
+                    logger.debug(f"OCR使用bbox参数识别到字符，重新计算后结果 [{target_strings[0]}]—>{res}")
                     return res
                 else:
                     new_res = {}
                     for key, value in res.items():
-                        new_res[key] = (value[0] + start_x, value[1] + start_y)
-                    return new_res
+                        if isinstance(value, tuple):
+                            new_res[key] = (value[0] + bbox.get("start_x"), value[1] + bbox.get("start_y"))
+                        else:
+                            new_res[key] = value
+                    if all(value_ is False for value_ in new_res.values()):
+                        return False
+                    else:
+                        logger.debug(f"OCR使用bbox参数，重新计算后结果:\n{json.dumps(new_res, ensure_ascii=False, indent=2)}")
+                        return new_res
         return False
