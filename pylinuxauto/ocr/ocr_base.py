@@ -287,7 +287,14 @@ class OCRBase:
                 h = bbox.get("h") if bbox.get("h") is not None else None
                 end_x = bbox.get("end_x") if bbox.get("end_x") is not None else None
                 end_y = bbox.get("end_y") if bbox.get("end_y") is not None else None
-                return_one = True if bbox.get("return_one") else False
+                if bbox.get("return_one") is True:
+                    return_one = True
+                elif bbox.get("return_one") is False:
+                    return_one = False
+                elif bbox.get("return_one") is None:
+                    return_one = True
+                else:
+                    raise ValueError("return_one 字段必须为 True 或 False")
 
                 if start_x is None or start_y is None:
                     raise ValueError("缺失 start_x 或 start_y 坐标")
@@ -339,6 +346,4 @@ class OCRBase:
                     for key, value in res.items():
                         new_res[key] = (value[0] + start_x, value[1] + start_y)
                     return new_res
-            else:
-                raise TypeError("return_one的值只能是布尔值")
         return False
