@@ -279,6 +279,7 @@ class OCRBase:
             _start = time.time()
 
             return_one = None
+            start_x = start_y = 0
             if bbox is not None:
                 start_x = bbox.get("start_x") if bbox.get("start_x") is not None else None
                 start_y = bbox.get("start_y") if bbox.get("start_y") is not None else None
@@ -318,13 +319,26 @@ class OCRBase:
                 time.sleep(pause)
                 continue
 
-            if return_one is None or return_one is False:
+            if return_one is None:
                 return res
             elif return_one:
                 if isinstance(res, tuple):
+                    res = (res[0] + start_x, res[1] + start_y)
                     return res
                 else:
-                    raise ValueError(f"return_one为True时仅返回唯一坐标，屏幕出现多组坐标：{res}")
+                    new_res = {}
+                    for key, value in res.items():
+                        new_res[key] = (value[0] + start_x, value[1] + start_y)
+                    raise ValueError(f"return_one为True时仅返回唯一坐标，屏幕出现多组坐标：{new_res}")
+            elif return_one is False:
+                if isinstance(res, tuple):
+                    res = (res[0] + start_x, res[1] + start_y)
+                    return res
+                else:
+                    new_res = {}
+                    for key, value in res.items():
+                        new_res[key] = (value[0] + start_x, value[1] + start_y)
+                    return new_res
             else:
                 raise TypeError("return_one的值只能是布尔值")
         return False
