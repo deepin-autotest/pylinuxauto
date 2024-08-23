@@ -85,7 +85,7 @@ class OCRBase:
                 pic_dir = cls.server().image_put(Binary(put_handle.read()))
                 put_handle.close()
                 # 返回识别结果
-                logger.info(f"USE_OCR_SERVER http://{config.OCR_SERVER_IP}")
+                logger.info(f"OCR SERVER http://{config.OCR_SERVER_IP}")
                 pic_path = cls.server().paddle_ocr(pic_dir, lang)
                 return pic_path
             except OSError:

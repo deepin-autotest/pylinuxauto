@@ -116,7 +116,7 @@ class ImageBase:
                 screen_rb.close()
                 tpl_path = cls.server().image_put(Binary(template_rb.read()))
                 template_rb.close()
-                logger.info(f"USE_IMAGE_SERVER http://{config.IMAGE_SERVER_IP}")
+                logger.info(f"IMAGE SERVER http://{config.IMAGE_SERVER_IP}")
                 return cls.server().match_image_by_opencv(
                     tpl_path, screen_path, rate, multiple
                 )

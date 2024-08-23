@@ -25,7 +25,7 @@ class _Config:
 
     PYLINUXAUTO_HOME = pathlib.Path(__file__).parent
 
-    PASSWORD = "1"
+    PASSWORD: str = os.environ.get("YOUQU_PASSWORD") or "1"
 
     # IMAGE
     IMAGE_SERVER_IP = "127.0.0.1"
