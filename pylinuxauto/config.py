@@ -71,7 +71,7 @@ class _Config:
 
     IS_IN_VIRTUALENV = sys.prefix != sys.base_prefix
 
-    check_pkg = os.popen("command -v apt").read()
+    check_pkg = os.popen("command -v apt").read().strip()
     if check_pkg:
         pkg = "apt"
     else:
