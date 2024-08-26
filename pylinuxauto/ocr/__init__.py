@@ -30,7 +30,8 @@ class OCR(MouseKeyChainMixin):
         bbox: dict = None,
     ):
         self.target_strings = target_strings
-        log_server = servers = self._ocr_servers
+        servers = self._ocr_servers
+        log_server = copy.deepcopy(servers)
         while servers:
             config.OCR_SERVER_IP = random.choice(servers)
             if OCRBase.check_connected() is False:

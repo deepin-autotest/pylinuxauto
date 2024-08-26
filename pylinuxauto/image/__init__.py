@@ -2,6 +2,7 @@
 # _*_ coding:utf-8 _*_
 # SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
 # SPDX-License-Identifier: Apache Software License
+import copy
 import random
 from typing import List
 
@@ -17,7 +18,8 @@ class Image(MouseKeyChainMixin):
         return [i.strip() for i in config.IMAGE_SERVER_IP.split("/") if i]
 
     def find_element_by_image(self, *args, **kwargs):
-        log_server = servers = self._image_servers
+        servers = self._image_servers
+        log_server = copy.deepcopy(servers)
         while servers:
             config.IMAGE_SERVER_IP = random.choice(servers)
             if ImageBase.check_connected() is False:
