@@ -3,6 +3,7 @@
 # SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
 # SPDX-License-Identifier: Apache Software License
 import random
+import copy
 from typing import List
 
 from pylinuxauto import MouseKeyChainMixin
