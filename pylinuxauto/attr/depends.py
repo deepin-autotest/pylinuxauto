@@ -39,7 +39,7 @@ def install_depends():
                     os.system(f"cp -r {p}/usr/lib/python3/dist-packages/* {site_packages_path}/")
                     os.system(f"rm -rf {p}*")
 
-            git_cairo_so_name = "_gi_cairo.cpython-37m-x86_64-linux-gnu.so"
+            git_cairo_so_name = f"_gi_cairo.cpython-{str(sys.version_info.major).replace('.', '')}m-{config.SYS_ARCH}-linux-gnu.so"
             if not os.path.exists(os.path.join(site_packages_path, "gi", git_cairo_so_name)):
                 px = "python3-gi-cairo"
                 os.system(f"apt download {px} > /dev/null 2>&1")

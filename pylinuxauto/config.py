@@ -24,7 +24,7 @@ class _Config:
     """配置模块"""
 
     PYLINUXAUTO_HOME = pathlib.Path(__file__).parent
-
+    SYS_ARCH = platform.machine().lower()
     PASSWORD: str = os.environ.get("YOUQU_PASSWORD") or "1"
 
     # IMAGE
